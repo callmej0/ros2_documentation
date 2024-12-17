@@ -1,5 +1,5 @@
-Reading from a bag file (C++)
-=============================
+Ament Lint CLI Utilities
+========================
 
 **Goal:** Learn how to use ``ament_lint`` and related tools to identify and fix code quality issues
 
