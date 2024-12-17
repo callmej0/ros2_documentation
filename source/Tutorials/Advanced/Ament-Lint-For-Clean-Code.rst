@@ -62,7 +62,7 @@ For example, if you wish to scan just source and header files for copyright noti
 * ``--verbose`` - Show all files instead of only the ones with errors / modifications (default: False)
 * ``--xunit-file XUNIT_FILE`` - Generate a xunit compliant XML file (default: None)
 
-1.1 ``ament_copyright`` Example
+1.3 ``ament_copyright`` Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To check if your ROS package has an appropriate copyright and license file simply call ``ament_copyright`` with no arguments.
@@ -73,3 +73,58 @@ Using the ``--verbose`` option will list all checked files.
   ament_copyright --verbose
 
 If you happen to find an issue with one of your files you can address it by calling the following command.
+
+2 ``ament_cppcheck``
+^^^^^^^^^^^^^^^^^^^^^
+
+The ``ament_cppcheck`` command line tool can be used to quickly perform static analysis of C++ source code files.
+`Static analysis <https://en.wikipedia.org/wiki/Static_program_analysis>`_ is the process of automatically reviewing source code files for patterns that can often cause issues after compilation.
+Some versions of cpp_check, the underlying utility used by ``ament_cppcheck``, can be rather slow.
+For this reason ``ament_cpp_check`` may be disabled on some systems.
+To enable it, you simply need to set the ``AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS`` environment variable. 
+
+
+2.1 ``ament_cppcheck`` Arguments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default ``ament_cppcheck`` walks the directory in which it is called, including subdirectories and returns a report that lists all of the potential issues in a source code file.
+The program takes a single optional argument which is a list of directories that should be scanned for the report.
+For example, if you wish to scan just a recently modified file you can call ``ament_cppcheck ./src/my_cpp_file.cpp``.
+
+2.2 ``ament_cppcheck`` Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``ament_cppcheck`` supports the following options:
+
+* ``-h, --help``- Show a help message and exit.
+* ``--libraries [LIBRARIES ...]`` - Library configurations to load in addition to the standard libraries of C and C++. Each library is passed to cppcheck as '--library=<library_name>'
+* ``--include_dirs [INCLUDE_DIRS ...]`` - Include directories for C/C++ files being checked.Each directory is passed to cppcheck as '-I <include_dir>' (default: None)
+* ``--exclude [EXCLUDE ...]`` - Exclude C/C++ files from being checked.
+* ``--xunit-file XUNIT_FILE`` - Generate a xunit compliant XML file (default: None)
+* ``--cppcheck-version`` - Get the cppcheck version, print it, and then exit.
+
+2.3 ``ament_cppcheck`` Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Create the following simple C++ program in a file named ``example.cpp``.
+
+.. code-block:: cpp
+
+  int main()
+  {
+      char a[10];
+      a[10] = 0;
+      return 0;
+  }
+
+
+This simple program accesses a part of memory out of bounds of the allocated array.Running
+ Running ``ament_cppcheck`` in the directory with the file will yield the following results:
+
+.. code-block:: console
+
+   > ament_cppcheck
+   [example.cpp:4]: (error: arrayIndexOutOfBounds) Array 'a[10]' accessed at index 10, which is out of bounds.
+   >
+
+
