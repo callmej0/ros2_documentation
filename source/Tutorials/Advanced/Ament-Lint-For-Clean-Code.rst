@@ -7,14 +7,15 @@ Ament Lint CLI Utilities
 
 **Time:** 10 minutes
 
-.. contents:: Contents
+   contents:: Contents
    :depth: 2
    :local:
 
 Background
 ----------
 
-The ``ament`` family of CLI tools are used for CMake-based software development with ROS 2.
+The ``ament`` family of CLI tools are Python tools used for software development with ROS 2.
+Ament tools can be used from any build system, but a subset of these tools, the ``ament_cmake`` tools, are designed specifically to CMake-based development easier.
 Ament ships with a collection of CLI programs that can help users write code that meet the ROS 2 coding standards.
 Using these tools can greatly increase development velocity and help users write ROS applications and core code that meet `the ROS project's coding standards <../../The-ROS2-Project/Contributing/Code-Style-Language-Versions>`.
 We recommend that ROS developers familiarize themselves with these tools and use them before submitting their final pull requests.
@@ -174,6 +175,7 @@ We will add a few lines of code that violate coding standards
 \tab   c=a;}<trailing whitespace>
        return 0;
    }
+
 
 
 Applying ``ament_cpplint`` to this file will yield the following errors:
