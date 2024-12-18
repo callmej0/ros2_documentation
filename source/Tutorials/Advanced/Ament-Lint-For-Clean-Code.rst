@@ -17,7 +17,7 @@ Background
 The ``ament`` family of CLI tools are used for CMake-based software development with ROS 2.
 Ament ships with a collection of CLI programs that can help users write code that meet the ROS 2 coding standards.
 Using these tools can greatly increase development velocity and help users write ROS applications and core code that meet the doc:`the ROS project's coding standards <../../The-ROS2-Project/Contributing/Code-Style-Language-Versions>`.
-We recommend that ROS developers familiarize themselves with these tools and use them before submitting their final pull requests. 
+We recommend that ROS developers familiarize themselves with these tools and use them before submitting their final pull requests.
 
 Prerequisites
 -------------
@@ -33,13 +33,13 @@ Ament Lint CLI Tools
 All ament linting tools use a similar CLI pattern.
 They take in a directory, a list of directories, file, or list of files, analyze the input files, and generate report.
 All ament linting tools have the following built-in options.
-**The most up to date and accurate documentation for a given ament tool can be found by using the tools built in ``--help`` functionality.**  
+**The most up to date and accurate documentation for a given ament tool can be found by using the tools built in ``--help`` functionality.**
 
 * ``-h, --help`` - shows a help message and exit.
   The built-in help messages usually have the most accurate and up-to-date documentation of the tool.
-* ``--exclude [filename ...]`` - The filenames to exclude from analysis, including wildcards. 
+* ``--exclude [filename ...]`` - The filenames to exclude from analysis, including wildcards.
 * ``--xunit-file XUNIT_FILE`` - Generate a `xunit <https://xunit.net/>`_ compliant XML file.
-  These files are most commonly used by IDEs to automate the ingestion of external development tools. 
+  These files are most commonly used by IDEs to automate the ingestion of external development tools.
 
 
 
@@ -50,7 +50,7 @@ The ``ament_copyright`` CLI can be used to check and update the copyright declar
 This tool can also be used to check for the presence of an appropriate software license, copyright year, and copyright holders in your source code.
 The ``ament_copyright`` tool works relative to the directory in which it is called, and walks the subdirectories and checks each source file within the directory [And dependencies?].
 You can use``ament_copyright` to check your ROS package, ROS workspace, directory, or a single source file by simply moving to the appropriate root directory and calling the command.
-``ament_copyright`` can also be used to used to automatically apply a copyright and license to source code files that are missing them. 
+``ament_copyright`` can also be used to used to automatically apply a copyright and license to source code files that are missing them.
 
 
 1.1 ``ament_copyright`` Arguments
@@ -90,7 +90,7 @@ The ``ament_cppcheck`` command line tool can be used to quickly perform static a
 `Static analysis <https://en.wikipedia.org/wiki/Static_program_analysis>`_ is the process of automatically reviewing source code files for patterns that can often cause issues after compilation.
 Some versions of cpp_check, the underlying utility used by ``ament_cppcheck``, can be rather slow.
 For this reason ``ament_cppcheck`` may be disabled on some systems.
-To enable it, you simply need to set the ``AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS`` environment variable. 
+To enable it, you simply need to set the ``AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS`` environment variable.
 
 
 2.1 ``ament_cppcheck`` Arguments
@@ -194,7 +194,7 @@ Applying ``ament_cpplint`` to this file will yield the following errors:
 The ``ament_flake8`` command line tool can be used to quickly perform linting of Python source code files using `Flake8 <https://pypi.org/project/flake8/>`_.
 This tool will help you locate and fix minor errors and style problems with your ROS Python programs such as trailing whitespace, overly long lines of code, poorly spaced function arguments, and much more!
 Unfortunately, at this time, ``ament_flake8`` is unable to to automatically fix these issues.
-Deveopers who whould like to address linting issues can use `Python's Black utility <https://github.com/psf/black>`_ to fix formatting issues automatically. 
+Deveopers who whould like to address linting issues can use `Python's Black utility <https://github.com/psf/black>`_ to fix formatting issues automatically.
 
 4.1 ``ament_flake8`` Arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -208,7 +208,7 @@ For example, if you wish to scan just one package in your workspace you can call
 
 * ``--config path`` - The config file used.
   The default config file can be found in your installation's site packages directory.
-  We do not recommend changing the default settings. 
+  We do not recommend changing the default settings.
 * ``--linelength N`` - Manually set the maximum line length.
 
 4.3 ``ament_flake8`` Example
@@ -231,24 +231,23 @@ Applying ``ament_flake8`` to this file will result in the following errors.
 
   example.py:1:25: E231 missing whitespace after ','
   def uglyPythonFunction(a,b,  c):
-  
-  
+
   example.py:5:5: F841 local variable 'extra_long' is assigned to but never used
       extra_long =(thisIsAVariableNameThatIsWayTooLongLongLong*thisIsAVariableNameThatIsWayTooLongLongLong )
       ^
-  
+
   example.py:5:17: E225 missing whitespace around operator
       extra_long =(thisIsAVariableNameThatIsWayTooLongLongLong*thisIsAVariableNameThatIsWayTooLongLongLong )
                   ^
-  
+
   example.py:5:100: E501 line too long (106 > 99 characters)
       extra_long =(thisIsAVariableNameThatIsWayTooLongLongLong*thisIsAVariableNameThatIsWayTooLongLongLong )
                                                                                                      ^
-  
+
   example.py:5:105: E202 whitespace before ')'
       extra_long =(thisIsAVariableNameThatIsWayTooLongLongLong*thisIsAVariableNameThatIsWayTooLongLongLong )
                                                                                                           ^
-  
+
   1     E202 whitespace before ')'
   1     E225 missing whitespace around operator
   1     E231 missing whitespace after ','
