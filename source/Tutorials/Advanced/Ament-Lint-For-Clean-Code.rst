@@ -265,9 +265,6 @@ Applying ``ament_flake8`` to this file will result in the following errors.
   * example.py
 
 
-If you have installed Python's `Black utility <https://github.com/psf/black>`_ it is possible to address these issues directly by calling ``black example.py.``
-It is also worth noting that there is a community contributed ament tool for Python Black called ``ament_black`` that can be found on `ROS Index <https://index.ros.org/p/ament_black/>`_.
-
 5 ``ament_uncrustify``
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -351,8 +348,4 @@ A few of these tools are listed below.
 * ``ament_pep257`` - Check Python docstrings against the style conventions in `PEP 257 <https://peps.python.org/pep-0257/>`_.
 
 Ament is highly extensible and ROS users are encouraged to build and use ament tools that make them more productive.
-Below is a curated list of user contributed ament lint tools.
-
-* ``ament_black`` - Is an ament implementation of Python Black. Python Black is a Python source code linter that can automatically apply its suggestions. ``ament_black`` can be found on `ROS Index <https://index.ros.org/p/ament_black/>`_.
-
 You can search for other community contributed ament lint tools by using the ``apt search`` or by `searching for ament on ROS Index <https://index.ros.org/search/?term=ament>`_.
