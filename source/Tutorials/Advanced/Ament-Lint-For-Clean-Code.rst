@@ -31,7 +31,7 @@ Ament Lint CLI Tools
 --------------------
 
 All ament linting tools use a similar CLI pattern.
-They take in a directory, a list of directories, file, or list of files, analyze the input files, and generate report.
+They take in a directory, a list of directories, file, or list of files, analyze the input files, and generate a report.
 All ament linting tools have the following built-in options.
 **The most up to date and accurate documentation for a given ament tool can be found by using the tools built in ``--help`` functionality.**
 
