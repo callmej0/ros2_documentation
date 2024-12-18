@@ -16,7 +16,7 @@ Background
 
 The ``ament`` family of CLI tools are used for CMake-based software development with ROS 2.
 Ament ships with a collection of CLI programs that can help users write code that meet the ROS 2 coding standards.
-Using these tools can greatly increase development velocity and help users write ROS applications and core code that meet the doc:`the ROS project's coding standards <../../The-ROS2-Project/Contributing/Code-Style-Language-Versions>`.
+Using these tools can greatly increase development velocity and help users write ROS applications and core code that meet `the ROS project's coding standards <../../The-ROS2-Project/Contributing/Code-Style-Language-Versions>`.
 We recommend that ROS developers familiarize themselves with these tools and use them before submitting their final pull requests.
 
 Prerequisites
@@ -49,7 +49,7 @@ All ament linting tools have the following built-in options.
 The ``ament_copyright`` CLI can be used to check and update the copyright declaration in ROS source code.
 This tool can also be used to check for the presence of an appropriate software license, copyright year, and copyright holders in your source code.
 The ``ament_copyright`` tool works relative to the directory in which it is called, and walks the subdirectories and checks each source file within the directory [And dependencies?].
-You can use``ament_copyright` to check your ROS package, ROS workspace, directory, or a single source file by simply moving to the appropriate root directory and calling the command.
+You can use``ament_copyright`` to check your ROS package, ROS workspace, directory, or a single source file by simply moving to the appropriate root directory and calling the command.
 ``ament_copyright`` can also be used to used to automatically apply a copyright and license to source code files that are missing them.
 
 
@@ -169,9 +169,9 @@ We will add a few lines of code that violate coding standards
   {
        int a = 10;
        int b = 10;
-       int c = 0;  
+       int c = 0;<trailing whitespace>
        if( a == b)  {
- 	  c=a;}  
+\tab   c=a;}<trailing whitespace>
        return 0;
    }
 
@@ -266,7 +266,7 @@ Applying ``ament_flake8`` to this file will result in the following errors.
 
 
 If you have installed Python's `Black utility <https://github.com/psf/black>`_ it is possible to address these issues directly by calling ``black example.py.``
-It is also worth noting that there is a community contributed ament tool for Python Black called ``ament_black`` that can be found on `ROS Index <https://index.ros.org/p/ament_black/>`_. 
+It is also worth noting that there is a community contributed ament tool for Python Black called ``ament_black`` that can be found on `ROS Index <https://index.ros.org/p/ament_black/>`_.
 
 5 ``ament_uncrustify``
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -302,9 +302,9 @@ Let's return to the simple C++ program named ``example.cpp``.
   {
        int a = 10;
        int b = 10;
-       int c = 0;  
-       if( a == b)  {
- 	  c=a;}  
+       int c = 0;<trailing whitespace>
+       if( a == b)<trailing whitespace>{
+    <tab>      c=a;}<trailing whitespace>
        return 0;
    }
 
@@ -320,9 +320,9 @@ Applying ``ament_uncrustify example.cpp`` to this file will yield the following 
   -  {
   -       int a = 10;
   -       int b = 10;
-  -       int c = 0;  
-  -       if( a == b)  {
-  - 	  c=a;}  
+  -       int c = 0;<trailing whitespace>
+  -       if( a == b)<trailing whitespace>{
+  - <tab>       c=a;}<trailing whitespace>
   -       return 0;
   -   }
   +int main()
