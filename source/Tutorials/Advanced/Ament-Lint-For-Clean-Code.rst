@@ -267,7 +267,7 @@ If you have installed Python's `Black utility <https://github.com/psf/black>`_ i
 ^^^^^^^^^^^^^^^^^^^^^^
 
 `Uncrustify <https://github.com/uncrustify/uncrustify>`_ is a C++ linting tool, similar to ``ament_cpplint``, that has the advantage that it can **automatically fix** the issues it finds!
-This tool will help you locate and fix minor errors and style problems with your C++ ROS  programs such as trailing whitespace, overly long lines of code, poorly spaced function arguments, and much more!
+This tool will help you locate and fix minor errors and style problems with your C++ ROS programs such as trailing whitespace, overly long lines of code, poorly spaced function arguments, and much more!
 
 
 5.1 ``ament_uncrustify`` Arguments
