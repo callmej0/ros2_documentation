@@ -30,6 +30,19 @@ If you need to install ROS 2, see the :doc:`Installation instructions <../../Ins
 Ament Lint CLI Tools
 --------------------
 
+All ament linting tools use a similar CLI pattern.
+They take in a directory, a list of directories, file, or list of files, analyze the input files, and generate report.
+All ament linting tools have the following built-in options.
+**The most up to date and accurate documentation for a given ament tool can be found by using the tools built in ``--help`` functionality.**  
+
+* ``-h, --help`` - shows a help message and exit.
+  The built-in help messages usually have the most accurate and up-to-date documentation of the tool.
+* ``--exclude [filename ...]`` - The filenames to exclude from analysis, including wildcards. 
+* ``--xunit-file XUNIT_FILE`` - Generate a `xunit <https://xunit.net/>`_ compliant XML file.
+  These files are most commonly used by IDEs to automate the ingestion of external development tools. 
+
+
+
 1 ``ament_copyright``
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -52,14 +65,11 @@ For example, if you wish to scan just source and header files for copyright noti
 
 ``ament_copyright`` supports the following options:
 
-* ``-h, --help`` - shows a help message and exit
-* ``--exclude [filename ...]`` - The filenames to exclude.
 * ``--add-missing COPYRIGHT_NAME LICENSE`` - Add missing copyright notice and license information using the passed copyright holder and license. ``LICENSE`` passed to this option is the name of the license to be used. A full list of available licenses can be found by calling ``ament_copyright --list-licenses``
 * ``--add-copyright-year`` - Add the current year to existing copyright notices.
 * ``--list-copyright-names`` - List names of known copyright holders.
-* ``--list-licenses`` - List names of known licenses )
-* ``--verbose`` - Show all files instead of only the ones with errors / modifications (default: False)
-* ``--xunit-file XUNIT_FILE`` - Generate a xunit compliant XML file (default: None)
+* ``--list-licenses`` - List names of known licenses.
+* ``--verbose`` - Show all files instead of only the ones with errors / modifications.
 
 1.3 ``ament_copyright`` Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -95,11 +105,8 @@ For example, if you wish to scan just a recently modified file you can call ``am
 
 ``ament_cppcheck`` supports the following options:
 
-* ``-h, --help``- Show a help message and exit.
 * ``--libraries [LIBRARIES ...]`` - Library configurations to load in addition to the standard libraries of C and C++. Each library is passed to cppcheck as '--library=<library_name>'
 * ``--include_dirs [INCLUDE_DIRS ...]`` - Include directories for C/C++ files being checked.Each directory is passed to cppcheck as '-I <include_dir>' (default: None)
-* ``--exclude [EXCLUDE ...]`` - Exclude C/C++ files from being checked.
-* ``--xunit-file XUNIT_FILE`` - Generate a xunit compliant XML file (default: None)
 * ``--cppcheck-version`` - Get the cppcheck version, print it, and then exit.
 
 2.3 ``ament_cppcheck`` Example
@@ -144,7 +151,6 @@ For example, if you wish to scan just source and header files for copyright noti
 3.2 ``ament_cpplint`` Options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* ``-h, --help`` - Show a help message and exit.
 * ``--filters FILTER,FILTER,...`` - A comma separated list of category filters to apply.
 * ``--linelength N`` - The maximum line length (default: 100).
 * ``--root ROOT`` - The --root option for cpplint.
@@ -200,11 +206,10 @@ For example, if you wish to scan just one package in your workspace you can call
 4.2 ``ament_flake8`` Options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* ``-h, --help`` - show a help message and exit
-* ``--config path`` - The config file used (default: /opt/ros/humble/lib/python3.10/site-packages/ament_flake8/configuration/ament_flake8.ini)
-* ``--linelength N`` - The maximum line length (default specified in the config file)
-* ``--exclude [filename ...]`` - the filenames to exclude. (default: None)
-* ``--xunit-file XUNIT_FILE`` - generate a xunit compliant XML file (default: None)
+* ``--config path`` - The config file used.
+  The default config file can be found in your installation's site packages directory.
+  We do not recommend changing the default settings. 
+* ``--linelength N`` - Manually set the maximum line length.
 
 4.3 ``ament_flake8`` Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -262,6 +267,7 @@ Applying ``ament_flake8`` to this file will result in the following errors.
 
 
 If you have installed Python's `Black utility <https://github.com/psf/black>`_ it is possible to address these issues directly by calling ``black example.py.``
+It is also worth noting that there is a community contributed ament tool for Python Black called ``ament_black`` that can be found on `ROS Index <https://index.ros.org/p/ament_black/>`_. 
 
 5 ``ament_uncrustify``
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -280,13 +286,10 @@ For example, if you wish to scan just one package in your workspace you can call
 5.2 ``ament_uncrustify`` Options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* ``-h, --help`` - show a help message and exit.
-* ``-c CFG`` - The config file.
+* ``-c CFG`` - The config file that Uncrustify should use if you would prefer to use your own settings. We recommend you stick to the defaults
 * ``--linelength N`` - The maximum line length.
 * ``--language`` - One of {C,C++,CPP}, passed to uncrustify as '-l <language>' to force a specific language rather then choosing one based on file extension.
-* ``--reformat`` -  Reformat the files in place, i.e. fix the formatting errors encountered.
-* ``--exclude [filename ...]`` - the filenames to exclude. (default: None)
-* ``--xunit-file XUNIT_FILE`` - generate a xunit compliant XML file (default: None)
+* ``--reformat`` -  Reformat the files in place, i.e. fix the formatting errors encountered. **We recommend you use this option when running ``ament_uncrustify`` as it will save you quite a bit of time!**
 
 5.3 ``ament_uncrustify`` Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -337,3 +340,20 @@ Applying ``ament_uncrustify example.cpp`` to this file will yield the following 
 
 To apply these changes to the file we can run ``ament_uncrustify`` with the ``--reformat`` flag.
 **With this option specified uncrustify will apply the necessary changes in place, saving us a lot of time, especially when working with a larger codebase!**
+
+6 Other Ament Tools Of Note
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+ROS Desktop Full ships with a handful of ament development tools that are worth noting.
+A few of these tools are listed below.
+
+* ``ament_lint_cmake`` - Check CMake files against the style conventions.
+* ``ament_xmllint`` - Check XML markup, such as XML launch files, using xmllint.
+* ``ament_pep257`` - Check Python docstrings against the style conventions in `PEP 257 <https://peps.python.org/pep-0257/>`_.
+
+Ament is highly extensible and ROS users are encouraged to build and use ament tools that make them more productive.
+Below is a curated list of user contributed ament lint tools.
+
+* ``ament_black`` - Is an ament implementation of Python Black. Python Black is a Python source code linter that can automatically apply its suggestions. ``ament_black`` can be found on `ROS Index <https://index.ros.org/p/ament_black/>`_.
+
+You can search for other community contributed ament lint tools by using the ``apt search`` or by `searching for ament on ROS Index <https://index.ros.org/search/?term=ament>`_.
