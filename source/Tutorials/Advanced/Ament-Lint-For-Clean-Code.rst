@@ -18,7 +18,7 @@ The ``ament`` family of CLI tools are Python tools used for software development
 Ament tools can be used from any build system, but a subset of these tools, the ``ament_cmake`` tools, are designed specifically to CMake-based development easier.
 Ament ships with a collection of CLI programs that can help users write code that meet the ROS 2 coding standards.
 Using these tools can greatly increase development velocity and help users write ROS applications and core code that meet `the ROS project's coding standards <../../The-ROS2-Project/Contributing/Code-Style-Language-Versions>`.
-We recommend that ROS developers familiarize themselves with these tools and use them before submitting their final pull requests.
+We recommend that ROS developers familiarize themselves with these tools and use them before submitting their pull requests.
 
 Prerequisites
 -------------
@@ -32,7 +32,7 @@ Ament Lint CLI Tools
 --------------------
 
 All ament linting tools use a similar CLI pattern.
-They take in a directory, a list of directories, file, or list of files, analyze the input files, and generate report.
+They take in a directory, a list of directories, file, or list of files, analyze the input files, and generate a report.
 All ament linting tools have the following built-in options.
 **The most up to date and accurate documentation for a given ament tool can be found by using the tools built in ``--help`` functionality.**
 
@@ -40,7 +40,7 @@ All ament linting tools have the following built-in options.
   The built-in help messages usually have the most accurate and up-to-date documentation of the tool.
 * ``--exclude [filename ...]`` - The filenames to exclude from analysis, including wildcards.
 * ``--xunit-file XUNIT_FILE`` - Generate a `xunit <https://xunit.net/>`_ compliant XML file.
-  These files are most commonly used by IDEs to automate the ingestion of external development tools.
+  These files are most commonly used by IDEs and CI to automate the ingestion of test results.
 
 
 
@@ -194,9 +194,8 @@ Applying ``ament_cpplint`` to this file will yield the following errors:
 
 `Flake8 <https://pypi.org/project/flake8/>`_ is a Python tool for linting and style enforcement.
 The ``ament_flake8`` command line tool can be used to quickly perform linting of Python source code files using `Flake8 <https://pypi.org/project/flake8/>`_.
-This tool will help you locate and fix minor errors and style problems with your ROS Python programs such as trailing whitespace, overly long lines of code, poorly spaced function arguments, and much more!
-Unfortunately, at this time, ``ament_flake8`` is unable to to automatically fix these issues.
-Deveopers who whould like to address linting issues can use `Python's Black utility <https://github.com/psf/black>`_ to fix formatting issues automatically.
+This tool will help you locate minor errors and style problems with your ROS Python programs such as trailing whitespace, overly long lines of code, poorly spaced function arguments, and much more!
+Note, however, that ``flake8`` and ``ament_flake8`` cannot automatically reformat code to fix these issues.
 
 4.1 ``ament_flake8`` Arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
