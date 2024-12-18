@@ -79,7 +79,7 @@ If you happen to find an issue with one of your files you can address it by call
 The ``ament_cppcheck`` command line tool can be used to quickly perform static analysis of C++ source code files.
 `Static analysis <https://en.wikipedia.org/wiki/Static_program_analysis>`_ is the process of automatically reviewing source code files for patterns that can often cause issues after compilation.
 Some versions of cpp_check, the underlying utility used by ``ament_cppcheck``, can be rather slow.
-For this reason ``ament_cpp_check`` may be disabled on some systems.
+For this reason ``ament_cppcheck`` may be disabled on some systems.
 To enable it, you simply need to set the ``AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS`` environment variable. 
 
 
