@@ -39,7 +39,7 @@ All ament linting tools have the following built-in options.
   The built-in help messages usually have the most accurate and up-to-date documentation of the tool.
 * ``--exclude [filename ...]`` - The filenames to exclude from analysis, including wildcards.
 * ``--xunit-file XUNIT_FILE`` - Generate a `xunit <https://xunit.net/>`_ compliant XML file.
-  These files are most commonly used by IDEs to automate the ingestion of external development tools.
+  These files are most commonly used by IDEs and CI to automate the ingestion of test results.
 
 
 
