@@ -132,6 +132,7 @@ This simple program accesses a part of memory out of bounds of the allocated arr
 
 ``ament_cpplint`` can be used to check your C++ code against the `Google style conventions <https://google.github.io/styleguide/cppguide.html>`_ using `cpplint <https://github.com/cpplint/cpplint?tab=readme-ov-file>`_.
 ``ament_cpplint`` will scan the current directory and subdirectories for all C++ header and source files and apply the CppLint application to the file and return the results.
+At this time ``ament_cpplint`` is unable to address issues it finds automatically, if you would like to fix the formatting issues automatically please see ``ament_uncrustify``.
 
 
 3.1 ``ament_cpplint`` Arguments
@@ -258,3 +259,81 @@ Applying ``ament_flake8`` to this file will result in the following errors.
   Checked files:
 
   * example.py
+
+
+If you have installed Python's `Black utility <https://github.com/psf/black>`_ it is possible to address these issues directly by calling ``black example.py.``
+
+5 ``ament_uncrustify``
+^^^^^^^^^^^^^^^^^^^^^^
+
+`Uncrustify <https://github.com/uncrustify/uncrustify>`_ is a C++ linting tool, similar to ``ament_cpplint``, that has the advantage that it can **automatically fix** the issues it finds!
+This tool will help you locate and fix minor errors and style problems with your C++ ROS  programs such as trailing whitespace, overly long lines of code, poorly spaced function arguments, and much more!
+
+
+5.1 ``ament_uncrustify`` Arguments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The program takes a single optional argument which is a list of directories that should be scanned for the report.
+For example, if you wish to scan just one package in your workspace you can call ``ament_uncrustify`` directly in the package's working directory or pass it a path to the directory.
+
+
+5.2 ``ament_uncrustify`` Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* ``-h, --help`` - show a help message and exit.
+* ``-c CFG`` - The config file.
+* ``--linelength N`` - The maximum line length.
+* ``--language`` - One of {C,C++,CPP}, passed to uncrustify as '-l <language>' to force a specific language rather then choosing one based on file extension.
+* ``--reformat`` -  Reformat the files in place, i.e. fix the formatting errors encountered.
+* ``--exclude [filename ...]`` - the filenames to exclude. (default: None)
+* ``--xunit-file XUNIT_FILE`` - generate a xunit compliant XML file (default: None)
+
+5.3 ``ament_uncrustify`` Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Let's return to the simple C++ program named ``example.cpp``.
+
+.. code-block:: cpp
+
+  int main()
+  {
+       int a = 10;
+       int b = 10;
+       int c = 0;  
+       if( a == b)  {
+ 	  c=a;}  
+       return 0;
+   }
+
+
+Applying ``ament_uncrustify example.cpp`` to this file will yield the following output.
+
+.. code-block:: cpp
+
+  --- example.cpp
+  +++ example.cpp.uncrustify
+  @@ -1,9 +1,10 @@
+  -  int main()
+  -  {
+  -       int a = 10;
+  -       int b = 10;
+  -       int c = 0;  
+  -       if( a == b)  {
+  - 	  c=a;}  
+  -       return 0;
+  -   }
+  +int main()
+  +{
+  +  int a = 10;
+  +  int b = 10;
+  +  int c = 0;
+  +  if (a == b) {
+  +    c = a;
+  +  }
+  +  return 0;
+  +}
+  1 files with code style divergence
+
+To apply these changes to the file we can run ``ament_uncrustify`` with the ``--reformat`` flag.
+**With this option specified uncrustify will apply the necessary changes in place, saving us a lot of time, especially when working with a larger codebase!**
