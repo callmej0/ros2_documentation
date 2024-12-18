@@ -194,7 +194,6 @@ Applying ``ament_cpplint`` to this file will yield the following errors:
 The ``ament_flake8`` command line tool can be used to quickly perform linting of Python source code files using `Flake8 <https://pypi.org/project/flake8/>`_.
 This tool will help you locate minor errors and style problems with your ROS Python programs such as trailing whitespace, overly long lines of code, poorly spaced function arguments, and much more!
 Note, however, that ``flake8`` and ``ament_flake8`` cannot automatically reformat code to fix these issues.
-Deveopers who whould like to address linting issues can use `Python's Black utility <https://github.com/psf/black>`_ to fix formatting issues automatically.
 
 4.1 ``ament_flake8`` Arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
