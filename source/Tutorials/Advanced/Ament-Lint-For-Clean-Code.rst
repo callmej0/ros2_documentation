@@ -1,7 +1,7 @@
 Ament Lint CLI Utilities
 ========================
 
-**Goal:** Learn how to use ``ament_lint`` and related tools to identify and fix code quality issues
+**Goal:** Learn how to use ``ament_lint`` and related tools to identify and fix code quality issues.
 
 **Tutorial level:** Advanced
 
