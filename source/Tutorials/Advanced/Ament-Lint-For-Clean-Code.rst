@@ -26,7 +26,6 @@ You should have the ``ament`` packages installed as part of your regular ROS 2 s
 
 If you need to install ROS 2, see the :doc:`Installation instructions <../../Installation>`.
 
-You should have already completed the :doc:`basic ROS 2 bag tutorial <../Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data>`, and we will be using the ``subset`` bag you created there.
 
 Ament Lint CLI Tools
 --------------------
@@ -75,7 +74,7 @@ Using the ``--verbose`` option will list all checked files.
 If you happen to find an issue with one of your files you can address it by calling the following command.
 
 2 ``ament_cppcheck``
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 The ``ament_cppcheck`` command line tool can be used to quickly perform static analysis of C++ source code files.
 `Static analysis <https://en.wikipedia.org/wiki/Static_program_analysis>`_ is the process of automatically reviewing source code files for patterns that can often cause issues after compilation.
@@ -85,14 +84,14 @@ To enable it, you simply need to set the ``AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS`` 
 
 
 2.1 ``ament_cppcheck`` Arguments
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default ``ament_cppcheck`` walks the directory in which it is called, including subdirectories and returns a report that lists all of the potential issues in a source code file.
 The program takes a single optional argument which is a list of directories that should be scanned for the report.
 For example, if you wish to scan just a recently modified file you can call ``ament_cppcheck ./src/my_cpp_file.cpp``.
 
 2.2 ``ament_cppcheck`` Options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``ament_cppcheck`` supports the following options:
 
@@ -104,7 +103,7 @@ For example, if you wish to scan just a recently modified file you can call ``am
 * ``--cppcheck-version`` - Get the cppcheck version, print it, and then exit.
 
 2.3 ``ament_cppcheck`` Example
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Create the following simple C++ program in a file named ``example.cpp``.
 
@@ -128,3 +127,134 @@ This simple program accesses a part of memory out of bounds of the allocated arr
    >
 
 
+3 ``ament_cpplint``
+^^^^^^^^^^^^^^^^^^^
+
+``ament_cpplint`` can be used to check your C++ code against the `Google style conventions <https://google.github.io/styleguide/cppguide.html>`_ using `cpplint <https://github.com/cpplint/cpplint?tab=readme-ov-file>`_.
+``ament_cpplint`` will scan the current directory and subdirectories for all C++ header and source files and apply the CppLint application to the file and return the results.
+
+
+3.1 ``ament_cpplint`` Arguments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The program takes a single optional argument which is a list of directories that should be scanned for the report.
+For example, if you wish to scan just source and header files for copyright notices you can call `` ament_copyright ./src ./include``.
+
+
+3.2 ``ament_cpplint`` Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* ``-h, --help`` - Show a help message and exit.
+* ``--filters FILTER,FILTER,...`` - A comma separated list of category filters to apply.
+* ``--linelength N`` - The maximum line length (default: 100).
+* ``--root ROOT`` - The --root option for cpplint.
+
+
+3.3 ``ament_cpplint`` Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Let's create a simple C++ program named ``example.cpp``.
+We will add a few lines of code that violate coding standards
+
+
+.. code-block:: cpp
+
+  int main()
+  {
+       int a = 10;
+       int b = 10;
+       int c = 0;  
+       if( a == b)  {
+ 	  c=a;}  
+       return 0;
+   }
+
+
+Applying ``ament_cpplint`` to this file will yield the following errors:
+
+.. code-block:: console
+
+  example.cpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+  example.cpp:5:  Line ends in whitespace.  Consider deleting these extra spaces.  [whitespace/end_of_line] [4]
+  example.cpp:7:  Tab found; better to use spaces  [whitespace/tab] [1]
+  example.cpp:7:  Line ends in whitespace.  Consider deleting these extra spaces.  [whitespace/end_of_line] [4]
+  example.cpp:7:  Missing spaces around =  [whitespace/operators] [4]
+
+
+4 ``ament_flake8``
+^^^^^^^^^^^^^^^^^^
+
+`Flake8 <https://pypi.org/project/flake8/>`_ is a Python tool for linting and style enforcement.
+The ``ament_flake8`` command line tool can be used to quickly perform linting of Python source code files using `Flake8 <https://pypi.org/project/flake8/>`_.
+This tool will help you locate and fix minor errors and style problems with your ROS Python programs such as trailing whitespace, overly long lines of code, poorly spaced function arguments, and much more!
+Unfortunately, at this time, ``ament_flake8`` is unable to to automatically fix these issues.
+Deveopers who whould like to address linting issues can use `Python's Black utility <https://github.com/psf/black>`_ to fix formatting issues automatically. 
+
+4.1 ``ament_flake8`` Arguments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The program takes a single optional argument which is a list of directories that should be scanned for the report.
+For example, if you wish to scan just one package in your workspace you can call ``ament_flake8`` directly in the package's working directory or pass it a path to the directory.
+
+
+4.2 ``ament_flake8`` Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* ``-h, --help`` - show a help message and exit
+* ``--config path`` - The config file used (default: /opt/ros/humble/lib/python3.10/site-packages/ament_flake8/configuration/ament_flake8.ini)
+* ``--linelength N`` - The maximum line length (default specified in the config file)
+* ``--exclude [filename ...]`` - the filenames to exclude. (default: None)
+* ``--xunit-file XUNIT_FILE`` - generate a xunit compliant XML file (default: None)
+
+4.3 ``ament_flake8`` Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Create the following simple Python program in a file named ``example.py``.
+
+.. code-block:: python
+
+  def uglyPythonFunction(a,b,  c):
+      if a != b:
+          print("A does not match b")
+      thisIsAVariableNameThatIsWayTooLongLongLong = 2
+      extra_long =(thisIsAVariableNameThatIsWayTooLongLongLong*thisIsAVariableNameThatIsWayTooLongLongLong )
+      return(c)
+
+Applying ``ament_flake8`` to this file will result in the following errors.
+
+.. code-block:: console
+
+  example.py:1:25: E231 missing whitespace after ','
+  def uglyPythonFunction(a,b,  c):
+  
+  
+  example.py:5:5: F841 local variable 'extra_long' is assigned to but never used
+      extra_long =(thisIsAVariableNameThatIsWayTooLongLongLong*thisIsAVariableNameThatIsWayTooLongLongLong )
+      ^
+  
+  example.py:5:17: E225 missing whitespace around operator
+      extra_long =(thisIsAVariableNameThatIsWayTooLongLongLong*thisIsAVariableNameThatIsWayTooLongLongLong )
+                  ^
+  
+  example.py:5:100: E501 line too long (106 > 99 characters)
+      extra_long =(thisIsAVariableNameThatIsWayTooLongLongLong*thisIsAVariableNameThatIsWayTooLongLongLong )
+                                                                                                     ^
+  
+  example.py:5:105: E202 whitespace before ')'
+      extra_long =(thisIsAVariableNameThatIsWayTooLongLongLong*thisIsAVariableNameThatIsWayTooLongLongLong )
+                                                                                                          ^
+  
+  1     E202 whitespace before ')'
+  1     E225 missing whitespace around operator
+  1     E231 missing whitespace after ','
+  1     E501 line too long (106 > 99 characters)
+  1     F841 local variable 'extra_long' is assigned to but never used
+
+  1 files checked
+  5 errors
+
+  'E'-type errors: 4
+  'F'-type errors: 1
+
+  Checked files:
+
+  * example.py
