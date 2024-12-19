@@ -86,6 +86,19 @@ Using the ``--verbose`` option will list all checked files.
   my_package/include/new_file.h: could not find copyright notice
   my_package/include/old_file.h: copyright=Open Source Robotics Foundation, Inc. (2023), license=apache2
 
+``ament_copyright`` can also be used to add a license file and copyright holder to a recently created file using the ``--add missing`` option.
+You can use the ``--list-licenses`` parameter to find all available license tags for ``ament_copyright``, you will need to choose one of the available licenses.
+The console example below creates a new file and adds a BSD2 license file to a new file and sets the copyright holder to "Foo Bar".
+
+.. code-block:: console
+
+  echo "void main{}" > new_file.cpp
+  ament_copyright --add-missing "Foo Bar" bsd2
+  * new_file.cpp
+  ament_copyright --verbose
+  new_file.cpp: copyright=Foo Bar (2024), license=bsd2
+  No problems found, checked 2 files
+
 
 2 ``ament_cppcheck``
 ^^^^^^^^^^^^^^^^^^^^
