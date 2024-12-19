@@ -50,7 +50,7 @@ All ament linting tools have the following built-in options.
 The ``ament_copyright`` CLI can be used to check and update the copyright declaration in ROS source code.
 This tool can also be used to check for the presence of an appropriate software license, copyright year, and copyright holders in your source code.
 The ``ament_copyright`` tool works relative to the directory in which it is called, and walks the subdirectories and checks each source file within the directory [And dependencies?].
-You can use``ament_copyright`` to check your ROS package, ROS workspace, directory, or a single source file by simply moving to the appropriate root directory and calling the command.
+You can use ``ament_copyright`` to check your ROS package, ROS workspace, directory, or a single source file by simply moving to the appropriate root directory and calling the command.
 ``ament_copyright`` can also be used to used to automatically apply a copyright and license to source code files that are missing them.
 
 
@@ -59,7 +59,7 @@ You can use``ament_copyright`` to check your ROS package, ROS workspace, directo
 
 By default ``ament_copyright`` walks the directory in which it is called, including subdirectories and returns a report that lists all files that are missing a copyright notice.
 The program takes a single optional argument which is a list of directories that should be scanned for the report.
-For example, if you wish to scan just source and header files for copyright notices you can call `` ament_copyright ./src ./include``.
+For example, if you wish to scan just source and header files for copyright notices you can call: ``ament_copyright ./src ./include``.
 
 1.2 ``ament_copyright`` Options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -146,7 +146,7 @@ At this time ``ament_cpplint`` is unable to address issues it finds automaticall
 3.1 ``ament_cpplint`` Arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The program takes a single optional argument which is a list of directories that should be scanned for the report.
-For example, if you wish to scan just source and header files for copyright notices you can call `` ament_copyright ./src ./include``.
+For example, if you wish to scan just source and header files for copyright notices you can call: ``ament_copyright ./src ./include``.
 
 
 3.2 ``ament_cpplint`` Options
@@ -168,14 +168,12 @@ We will add a few lines of code that violate coding standards
 
   int main()
   {
-       int a = 10;
-       int b = 10;
-       int c = 0;<trailing whitespace>
-       if( a == b)  {
-\tab   c=a;}<trailing whitespace>
-       return 0;
-   }
-
+    int a = 10;
+    int b = 10;
+    int c = 0;/*<trailing whitespace>*/
+    if( a == b)  {/*<tab>*/      c=a;}/*<trailing whitespace>*/
+    return 0;
+  }
 
 
 Applying ``ament_cpplint`` to this file will yield the following errors:
@@ -183,10 +181,10 @@ Applying ``ament_cpplint`` to this file will yield the following errors:
 .. code-block:: console
 
   example.cpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
-  example.cpp:5:  Line ends in whitespace.  Consider deleting these extra spaces.  [whitespace/end_of_line] [4]
-  example.cpp:7:  Tab found; better to use spaces  [whitespace/tab] [1]
-  example.cpp:7:  Line ends in whitespace.  Consider deleting these extra spaces.  [whitespace/end_of_line] [4]
-  example.cpp:7:  Missing spaces around =  [whitespace/operators] [4]
+  example.cpp:6:  Line ends in whitespace.  Consider deleting these extra spaces.  [whitespace/end_of_line] [4]
+  example.cpp:6:  Tab found; better to use spaces  [whitespace/tab] [1]
+  example.cpp:6:  Line ends in whitespace.  Consider deleting these extra spaces.  [whitespace/end_of_line] [4]
+  example.cpp:6:  Missing spaces around =  [whitespace/operators] [4]
 
 
 4 ``ament_flake8``
