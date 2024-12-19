@@ -49,7 +49,7 @@ All ament linting tools have the following built-in options.
 
 The ``ament_copyright`` CLI can be used to check and update the copyright declaration in ROS source code.
 This tool can also be used to check for the presence of an appropriate software license, copyright year, and copyright holders in your source code.
-The ``ament_copyright`` tool works relative to the directory in which it is called, and walks the subdirectories and checks each source file within the directory [And dependencies?].
+The ``ament_copyright`` tool works relative to the directory in which it is called, and walks the subdirectories and checks each source file within the directory.
 You can use ``ament_copyright`` to check your ROS package, ROS workspace, directory, or a single source file by simply moving to the appropriate root directory and calling the command.
 ``ament_copyright`` can also be used to used to automatically apply a copyright and license to source code files that are missing them.
 
@@ -125,8 +125,8 @@ Create the following simple C++ program in a file named ``example.cpp``.
   }
 
 
-This simple program accesses a part of memory out of bounds of the allocated array.Running
- Running ``ament_cppcheck`` in the directory with the file will yield the following results:
+This simple program accesses a part of memory out of bounds of the allocated array.
+Running ``ament_cppcheck`` in the directory with the file will yield the following results:
 
 .. code-block:: console
 
@@ -161,8 +161,7 @@ For example, if you wish to scan just source and header files for copyright noti
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's create a simple C++ program named ``example.cpp``.
-We will add a few lines of code that violate coding standards
-
+We will add a few lines of code that violate coding standards:
 
 .. code-block:: cpp
 
@@ -307,7 +306,7 @@ Let's return to the simple C++ program named ``example.cpp``.
 
 Applying ``ament_uncrustify example.cpp`` to this file will yield the following output.
 
-.. code-block:: cpp
+.. code-block:: diff
 
   --- example.cpp
   +++ example.cpp.uncrustify
