@@ -84,7 +84,15 @@ extensions = [
     'sphinx_rtd_theme',
     'sphinx_sitemap_ros',
     'sphinxcontrib.mermaid',
+    "sphinxcontrib.spelling",
 ]
+
+# Spelling configuration
+spelling_show_suggestions = False
+spelling_ignore_acronyms = True
+spelling_ignore_case = True
+spelling_ignore_digits = True
+#spelling_word_list_filename = "spelling_wordlist.txt"
 
 # Intersphinx mapping
 

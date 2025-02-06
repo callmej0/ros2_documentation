@@ -8,3 +8,4 @@ sphinx-multiversion
 sphinx-rtd-theme
 sphinx-tabs
 sphinxcontrib-mermaid
+sphinxcontrib.spelling

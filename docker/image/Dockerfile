@@ -20,7 +20,8 @@ RUN apt-get update && \
         graphviz \
         locales \
         make \
-        python3-pip && \
+        python3-pip \
+        enchant-2 && \
     rm -rf /var/lib/apt/lists/*
 
 RUN locale-gen en_US en_US.UTF-8

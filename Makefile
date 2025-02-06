@@ -3,6 +3,7 @@
 SOURCE     = source
 OUT        = build
 LINKCHECKDIR  = $(OUT)/linkcheck
+SPELLCHECKDIR  = $(OUT)/spellcheck
 PYTHON := python3
 ifeq ($(OS),Windows_NT)
     PYTHON := python
@@ -27,6 +28,11 @@ lint:
 
 test:
 	doc8 --ignore D001 --ignore-path build
+
+spellcheck:
+	$(BUILD) -b spelling $(OPTS) $(SOURCE) $(SPELLCHECKDIR)
+	@echo
+	@echo "Check finished. Report is in $(SPELLCHECKDIR)."
 
 linkcheck:
 	$(BUILD) -b linkcheck $(OPTS) $(SOURCE) $(LINKCHECKDIR)
