@@ -1,7 +1,7 @@
 Migrating Dependencies
 ======================
 
-This page shows you how to tell if all of your ROS 1 package's dependencies are available in ROS 2.
+This page shows you how to check if all of your ROS 1 package's dependencies are available in ROS 2.
 
 .. contents:: Table of Contents
    :depth: 2
@@ -10,30 +10,45 @@ This page shows you how to tell if all of your ROS 1 package's dependencies are 
 Prerequisites
 -------------
 
-This page assumes you have Linux machine with :doc:`rosdep </Tutorials/Intermediate/Rosdep>` installed.
+This page assumes you have a machine with :doc:`rosdep </Tutorials/Intermediate/Rosdep>` installed.
 
 Why do dependencies matter?
 ---------------------------
 
 Virtually all ROS packages depend on something.
-A package that needs the transform between two points probably depends on ``tf2``.
-A package that installs URDF files probably needs ``xacro``.
-No package can work without its dependencies, so when you want to migrate any package to ROS 2 you must make sure all of its dependencies are available first.
+If your package needs transform between two points, it probably depends on `tf2 <https://index.ros.org/p/tf2/>`__.
+If your package installs URDF files, it probably depends on `xacro <https://index.ros.org/p/xacro/>`__.
+No package can work without its dependencies, so a package can only be migrated to ROS 2 if all of its dependencies are also available in ROS 2.
 
-Ask ``rosdep`` if your dependencies are available
+Check if your dependencies are available in ROS 2
 -------------------------------------------------
 
-Use :doc:`rosdep </Tutorials/Intermediate/Rosdep>` to determine if your ROS 1 package's dependencies are available in ROS 2.
+Use :doc:`rosdep </Tutorials/Intermediate/Rosdep>` to check if your package's dependencies are available in ROS 2 by following this process:
 
-First, decide what ROS 2 distro you want your package to work on.
+1. Decide which ROS distro you want to check.
+2. Look up the Ubuntu version supported by that ROS distro.
+3. Use ``rosdep keys`` to list your package's dependencies.
+4. Use ``rosdep resolve`` to see which of those dependencies are available.
+5. Check if any missing dependencies have replacements in ROS 2.
+
+Decide which ROS distro to check
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+New packages are being added to ROS 2 all the time.
+Newer ROS distros might have your package's dependencies, while older ROS distros might not.
+Using ``rosdep``, you can only check if your package's dependencies are available in one ROS distro at a time.
+
+Pick the ROS distro you want to check, and remember its codename.
+For example, ``jazzy`` is the codename for `ROS Jazzy Jalisco <https://docs.ros.org/en/foxy/Releases/Release-Jazzy-Jalisco.html>`__.
 Next, look up the Ubuntu version supported by that ROS distro in `REP 2000 <https://www.ros.org/reps/rep-2000.html>`__.
-Finally run these two commands:
+For example, ROS Jazzy supports `upports Ubuntu Noble <https://www.ros.org/reps/rep-2000.html#jazzy-jalisco-may-2024-may-2029>`__.
+Use the ROS distro codename and Ubuntu version name to run these two commands:
 
 1. Run ``rosdep keys --from-paths PATH_TO_YOUR_ROS1_PACKAGE`` to get a list of your package's dependencies.
-2. Run ``rosdep resolve --os=ubuntu:LOWERCASE_UBUNTU_DISTRO --rosdistro=ROS_DISTRO DEPENDENCY1 DEPENDENCY2 ...`` to see which of those dependencies are available in ROS 2.
+2. Run ``rosdep resolve --os=ubuntu:LOWERCASE_UBUNTU_VERSION --rosdistro=ROS_DISTRO_CODENAME DEPENDENCY1 DEPENDENCY2 ...`` to see which of those dependencies are available in ROS 2.
 
 Example
-^^^^^^^
+~~~~~~~
 
 Create a folder called ``my_package`` and create a file ``package.xml`` inside it with the following content:
 
@@ -259,6 +274,8 @@ TODO move_base -> nav2, ... what else?
      - rclcpp
    * - roslaunch
      - launch_ros
+   * - roslint
+     - ament_lint_auto
    * - rospy
      - rclpy
    * - rostest
