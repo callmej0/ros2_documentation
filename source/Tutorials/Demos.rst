@@ -12,6 +12,7 @@ Demos
    Demos/dummy-robot-demo
    Demos/Logging-and-logger-configuration
    Demos/Content-Filtering-Subscription
+   Demos/Wait-for-Acknowledgment
 
 External resources
 ------------------
