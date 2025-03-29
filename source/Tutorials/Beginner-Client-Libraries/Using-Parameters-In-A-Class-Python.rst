@@ -72,9 +72,9 @@ Inside the ``ros2_ws/src/python_parameters/python_parameters`` directory, create
 .. code-block:: Python
 
     import rclpy
-    import rclpy.node
+    from rclpy.node import Node
 
-    class MinimalParam(rclpy.node.Node):
+    class MinimalParam(Node):
         def __init__(self):
             super().__init__('minimal_param_node')
 
@@ -116,7 +116,7 @@ Next the ``timer`` is initialized with a period of 1, which causes the ``timer_c
 
 .. code-block:: Python
 
-    class MinimalParam(rclpy.node.Node):
+    class MinimalParam(Node):
         def __init__(self):
             super().__init__('minimal_param_node')
 
@@ -168,7 +168,7 @@ For that to work, the ``__init__`` code has to be changed to:
 
     # ...
 
-    class MinimalParam(rclpy.node.Node):
+    class MinimalParam(Node):
         def __init__(self):
             super().__init__('minimal_param_node')
 

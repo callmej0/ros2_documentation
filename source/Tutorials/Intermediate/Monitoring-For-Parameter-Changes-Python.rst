@@ -70,13 +70,13 @@ Inside the ``ros2_ws/src/python_parameter_event_handler/python_parameter_event_h
 .. code-block:: Python
 
     import rclpy
-    import rclpy.node
+    from rclpy.node import Node
     import rclpy.parameter
 
     from rclpy.parameter_event_handler import ParameterEventHandler
 
 
-    class SampleNodeWithParameters(rclpy.node.Node):
+    class SampleNodeWithParameters(Node):
         def __init__(self):
             super().__init__('node_with_parameters')
 
@@ -108,7 +108,7 @@ The ``import`` statements at the top are used to import the package dependencies
 .. code-block:: Python
 
     import rclpy
-    import rclpy.node
+    from rclpy.node import Node
     import rclpy.parameter
 
     from rclpy.parameter_event_handler import ParameterEventHandler
@@ -119,7 +119,7 @@ Next, the code creates a ``ParameterEventHandler`` that will be used to monitor 
 
 .. code-block:: Python
 
-    class SampleNodeWithParameters(rclpy.node.Node):
+    class SampleNodeWithParameters(Node):
         def __init__(self):
             super().__init__('node_with_parameters')
 
