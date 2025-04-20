@@ -48,13 +48,13 @@ Open a new terminal and run:
 
 .. code-block:: console
 
-    ros2 run turtlesim turtlesim_node
+  $ ros2 run turtlesim turtlesim_node
 
 Open another terminal and run:
 
 .. code-block:: console
 
-    ros2 run turtlesim turtle_teleop_key
+  $ ros2 run turtlesim turtle_teleop_key
 
 2 ros2 service list
 ^^^^^^^^^^^^^^^^^^^
@@ -63,6 +63,7 @@ Running the ``ros2 service list`` command in a new terminal will return a list o
 
 .. code-block:: console
 
+  $ ros2 service list
   /clear
   /kill
   /reset
@@ -102,19 +103,14 @@ To find out the type of a service, use the command:
 
 .. code-block:: console
 
-  ros2 service type <service_name>
+  $ ros2 service type <service_name>
 
 Let's take a look at turtlesim's ``/clear`` service.
 In a new terminal, enter the command:
 
 .. code-block:: console
 
-  ros2 service type /clear
-
-Which should return:
-
-.. code-block:: console
-
+  $ ros2 service type /clear
   std_srvs/srv/Empty
 
 The ``Empty`` type means the service call sends no data when making a request and receives no data when receiving a response.
@@ -126,12 +122,7 @@ To see the types of all the active services at the same time, you can append the
 
 .. code-block:: console
 
-  ros2 service list -t
-
-Which will return:
-
-.. code-block:: console
-
+  $ ros2 service list -t
   /clear [std_srvs/srv/Empty]
   /kill [turtlesim/srv/Kill]
   /reset [std_srvs/srv/Empty]
@@ -149,18 +140,13 @@ If you want to find all the services of a specific type, you can use the command
 
 .. code-block:: console
 
-  ros2 service find <type_name>
+  $ ros2 service find <type_name>
 
 For example, you can find all the ``Empty`` typed services like this:
 
 .. code-block:: console
 
-  ros2 service find std_srvs/srv/Empty
-
-Which will return:
-
-.. code-block:: console
-
+  $ ros2 service find std_srvs/srv/Empty
   /clear
   /reset
 
@@ -171,18 +157,13 @@ You can call services from the command line, but first you need to know the stru
 
 .. code-block:: console
 
-  ros2 interface show <type_name>
+  $ ros2 interface show <type_name>
 
 Try this on the ``/clear`` service's type, ``Empty``:
 
 .. code-block:: console
 
-  ros2 interface show std_srvs/srv/Empty
-
-Which will return:
-
-.. code-block:: console
-
+  $ ros2 interface show std_srvs/srv/Empty
   ---
 
 The ``---`` separates the request structure (above) from the response structure (below).
@@ -196,12 +177,7 @@ To see the request and response arguments of the ``/spawn`` service, run the com
 
 .. code-block:: console
 
-  ros2 interface show turtlesim/srv/Spawn
-
-Which will return:
-
-.. code-block:: console
-
+  $ ros2 interface show turtlesim/srv/Spawn
   float32 x
   float32 y
   float32 theta
@@ -221,14 +197,14 @@ Now that you know what a service type is, how to find a service's type, and how 
 
 .. code-block:: console
 
-  ros2 service call <service_name> <service_type> <arguments>
+  $ ros2 service call <service_name> <service_type> <arguments>
 
 The ``<arguments>`` part is optional.
 For example, you know that ``Empty`` typed services don't have any arguments:
 
 .. code-block:: console
 
-  ros2 service call /clear std_srvs/srv/Empty
+  $ ros2 service call /clear std_srvs/srv/Empty
 
 This command will clear the turtlesim window of any lines your turtle has drawn.
 
@@ -241,16 +217,13 @@ Enter the command:
 
 .. code-block:: console
 
-  ros2 service call /spawn turtlesim/srv/Spawn "{x: 2, y: 2, theta: 0.2, name: ''}"
-
-You will get this method-style view of what's happening, and then the service response:
-
-.. code-block:: console
-
+  $ ros2 service call /spawn turtlesim/srv/Spawn "{x: 2, y: 2, theta: 0.2, name: ''}"64gg
   requester: making request: turtlesim.srv.Spawn_Request(x=2.0, y=2.0, theta=0.2, name='')
 
   response:
   turtlesim.srv.Spawn_Response(name='turtle2')
+
+You will get this method-style view of what's happening, and then the service response.
 
 Your turtlesim window will update with the newly spawned turtle right away:
 

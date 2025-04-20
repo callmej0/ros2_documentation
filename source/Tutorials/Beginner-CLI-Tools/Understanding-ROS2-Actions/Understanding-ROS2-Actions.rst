@@ -53,13 +53,13 @@ Open a new terminal and run:
 
 .. code-block:: console
 
-    ros2 run turtlesim turtlesim_node
+  $ ros2 run turtlesim turtlesim_node
 
 Open another terminal and run:
 
 .. code-block:: console
 
-    ros2 run turtlesim turtle_teleop_key
+  $ ros2 run turtlesim turtle_teleop_key
 
 
 2 Use actions
@@ -118,12 +118,7 @@ To see the list of actions a node provides, ``/turtlesim`` in this case, open a 
 
 .. code-block:: console
 
-    ros2 node info /turtlesim
-
-Which will return a list of ``/turtlesim``'s subscribers, publishers, services, action servers and action clients:
-
-.. code-block:: console
-
+  $ ros2 node info /turtlesim
   /turtlesim
     Subscribers:
       /parameter_events: rcl_interfaces/msg/ParameterEvent
@@ -153,6 +148,8 @@ Which will return a list of ``/turtlesim``'s subscribers, publishers, services, 
       /turtle1/rotate_absolute: turtlesim/action/RotateAbsolute
     Action Clients:
 
+The command returns a list of ``/turtlesim``'s subscribers, publishers, services, action servers and action clients.
+
 Notice that the ``/turtle1/rotate_absolute`` action for ``/turtlesim`` is under ``Action Servers``.
 This means ``/turtlesim`` responds to and provides feedback for the ``/turtle1/rotate_absolute`` action.
 
@@ -161,12 +158,7 @@ To see that, run:
 
 .. code-block:: console
 
-    ros2 node info /teleop_turtle
-
-Which will return:
-
-.. code-block:: console
-
+  $ ros2 node info /teleop_turtle
   /teleop_turtle
     Subscribers:
       /parameter_events: rcl_interfaces/msg/ParameterEvent
@@ -195,13 +187,8 @@ To identify all the actions in the ROS graph, run the command:
 
 .. code-block:: console
 
-    ros2 action list
-
-Which will return:
-
-.. code-block:: console
-
-    /turtle1/rotate_absolute
+  $ ros2 action list
+  /turtle1/rotate_absolute
 
 This is the only action in the ROS graph right now.
 It controls the turtle's rotation, as you saw earlier.
@@ -215,13 +202,8 @@ To find ``/turtle1/rotate_absolute``'s type, run the command:
 
 .. code-block:: console
 
-    ros2 action list -t
-
-Which will return:
-
-.. code-block:: console
-
-    /turtle1/rotate_absolute [turtlesim/action/RotateAbsolute]
+  $ ros2 action list -t
+  /turtle1/rotate_absolute [turtlesim/action/RotateAbsolute]
 
 In brackets to the right of each action name (in this case only ``/turtle1/rotate_absolute``) is the action type, ``turtlesim/action/RotateAbsolute``.
 You will need this when you want to execute an action from the command line or from code.
@@ -233,12 +215,7 @@ You can further introspect the ``/turtle1/rotate_absolute`` action with the comm
 
 .. code-block:: console
 
-    ros2 action info /turtle1/rotate_absolute
-
-Which will return
-
-.. code-block:: console
-
+  $ ros2 action info /turtle1/rotate_absolute
   Action: /turtle1/rotate_absolute
   Action clients: 1
       /teleop_turtle
@@ -258,7 +235,7 @@ Enter the following command with the action type in your terminal:
 
 .. code-block:: console
 
-  ros2 interface show turtlesim/action/RotateAbsolute
+  $ ros2 interface show turtlesim/action/RotateAbsolute
 
 Which will return:
 
@@ -284,7 +261,7 @@ Now let's send an action goal from the command line with the following syntax:
 
 .. code-block:: console
 
-    ros2 action send_goal <action_name> <action_type> <values>
+  $ ros2 action send_goal <action_name> <action_type> <values>
 
 ``<values>`` need to be in YAML format.
 
@@ -292,12 +269,7 @@ Keep an eye on the turtlesim window, and enter the following command into your t
 
 .. code-block:: console
 
-    ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute "{theta: 1.57}"
-
-You should see the turtle rotating, as well as the following message in your terminal:
-
-.. code-block:: console
-
+  $ ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute "{theta: 1.57}"
   Waiting for an action server to become available...
   Sending goal:
      theta: 1.57
@@ -309,6 +281,10 @@ You should see the turtle rotating, as well as the following message in your ter
 
   Goal finished with status: SUCCEEDED
 
+
+You should see the turtle rotating.
+
+
 All goals have a unique ID, shown in the return message.
 You can also see the result, a field with the name ``delta``, which is the displacement to the starting position.
 
@@ -316,12 +292,7 @@ To see the feedback of this goal, add ``--feedback`` to the ``ros2 action send_g
 
 .. code-block:: console
 
-    ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute "{theta: -1.57}" --feedback
-
-Your terminal will return the message:
-
-.. code-block:: console
-
+  $ ros2 action send_goal /turtle1/rotate_absolute turtlesim/action/RotateAbsolute "{theta: -1.57}" --feedback
   Sending goal:
      theta: -1.57
 
