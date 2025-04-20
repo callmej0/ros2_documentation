@@ -46,14 +46,14 @@ Navigate into ``ros2_ws/src`` and create a new package:
 
 .. code-block:: console
 
-  ros2 pkg create --build-type ament_cmake --license Apache-2.0 cpp_srvcli --dependencies rclcpp example_interfaces
+  $ ros2 pkg create --build-type ament_cmake --license Apache-2.0 cpp_srvcli --dependencies rclcpp example_interfaces
 
 Your terminal will return a message verifying the creation of your package ``cpp_srvcli`` and all its necessary files and folders.
 
 The ``--dependencies`` argument will automatically add the necessary dependency lines to ``package.xml`` and ``CMakeLists.txt``.
 ``example_interfaces`` is the package that includes `the .srv file <https://github.com/ros2/example_interfaces/blob/{REPOS_FILE_BRANCH}/srv/AddTwoInts.srv>`__ you will need to structure your requests and responses:
 
-.. code-block:: console
+.. code-block:: bash
 
     int64 a
     int64 b
@@ -315,7 +315,7 @@ It's good practice to run ``rosdep`` in the root of your workspace (``ros2_ws``)
 
     .. code-block:: console
 
-      rosdep install -i --from-path src --rosdistro {DISTRO} -y
+      $ rosdep install -i --from-path src --rosdistro {DISTRO} -y
 
   .. group-tab:: macOS
 
@@ -334,19 +334,19 @@ Navigate back to the root of your workspace, ``ros2_ws``, and build your new pac
 
     .. code-block:: console
 
-      colcon build --packages-select cpp_srvcli
+      $ colcon build --packages-select cpp_srvcli
 
   .. group-tab:: macOS
 
     .. code-block:: console
 
-      colcon build --packages-select cpp_srvcli
+      $ colcon build --packages-select cpp_srvcli
 
   .. group-tab:: Windows
 
     .. code-block:: console
 
-      colcon build --merge-install --packages-select cpp_srvcli
+      $ colcon build --merge-install --packages-select cpp_srvcli
 
 Open a new terminal, navigate to ``ros2_ws``, and source the setup files:
 
@@ -356,25 +356,25 @@ Open a new terminal, navigate to ``ros2_ws``, and source the setup files:
 
     .. code-block:: console
 
-      source install/setup.bash
+      $ source install/setup.bash
 
   .. group-tab:: macOS
 
     .. code-block:: console
 
-      . install/setup.bash
+      $ . install/setup.bash
 
   .. group-tab:: Windows
 
     .. code-block:: console
 
-      call install/setup.bat
+      $ call install/setup.bat
 
 Now run the service node:
 
 .. code-block:: console
 
-     ros2 run cpp_srvcli server
+  $ ros2 run cpp_srvcli server
 
 The terminal should return the following message, and then wait:
 
@@ -383,17 +383,13 @@ The terminal should return the following message, and then wait:
     [INFO] [rclcpp]: Ready to add two ints.
 
 Open another terminal, source the setup files from inside ``ros2_ws`` again.
-Start the client node, followed by any two integers separated by a space:
-
-.. code-block:: console
-
-     ros2 run cpp_srvcli client 2 3
-
+Start the client node, followed by any two integers separated by a space.
 If you chose ``2`` and ``3``, for example, the client would receive a response like this:
 
 .. code-block:: console
 
-    [INFO] [rclcpp]: Sum: 5
+  $ ros2 run cpp_srvcli client 2 3
+  [INFO] [rclcpp]: Sum: 5
 
 Return to the terminal where your service node is running.
 You will see that it published log messages when it received the request and the data it received, and the response it sent back:
