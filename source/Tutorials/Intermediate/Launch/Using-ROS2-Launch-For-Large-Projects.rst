@@ -292,7 +292,7 @@ To finally see the result of our code, build the package and launch the top-leve
 
 .. code-block:: console
 
-   ros2 launch launch_tutorial launch_turtlesim.launch.py
+   $ ros2 launch launch_tutorial launch_turtlesim.launch.py
 
 You will now see the two turtlesim simulations started.
 There are two turtles in the first one and one in the second one.
@@ -305,7 +305,7 @@ If you want to control the ``turtle1``, run the teleop node.
 
 .. code-block:: console
 
-   ros2 run turtlesim turtle_teleop_key
+   $ ros2 run turtlesim turtle_teleop_key
 
 As a result, you will see a similar picture:
 
