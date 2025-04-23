@@ -39,27 +39,27 @@ Set up a :doc:`workspace <../Beginner-Client-Libraries/Creating-A-Workspace/Crea
 
   .. group-tab:: Linux
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      mkdir -p ros2_ws/src #you can reuse existing workspace with this naming convention
-      cd ros2_ws/src
-      ros2 pkg create action_tutorials_interfaces
+      $ mkdir -p ros2_ws/src # you can reuse an existing workspace with this naming convention
+      $ cd ros2_ws/src
+      $ ros2 pkg create action_tutorials_interfaces
 
   .. group-tab:: macOS
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      mkdir -p ros2_ws/src
-      cd ros2_ws/src
-      ros2 pkg create action_tutorials_interfaces
+      $ mkdir -p ros2_ws/src
+      $ cd ros2_ws/src
+      $ ros2 pkg create action_tutorials_interfaces
 
   .. group-tab:: Windows
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      md ros2_ws\src
-      cd ros2_ws\src
-      ros2 pkg create action_tutorials_interfaces
+      $ md ros2_ws\src
+      $ cd ros2_ws\src
+      $ ros2 pkg create action_tutorials_interfaces
 
 Tasks
 -----
@@ -93,28 +93,28 @@ Create an ``action`` directory in our ROS 2 package ``action_tutorials_interface
 
   .. group-tab:: Linux
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      cd action_tutorials_interfaces
-      mkdir action
+      $ cd action_tutorials_interfaces
+      $ mkdir action
 
   .. group-tab:: macOS
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      cd action_tutorials_interfaces
-      mkdir action
+      $ cd action_tutorials_interfaces
+      $ mkdir action
 
   .. group-tab:: Windows
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      cd action_tutorials_interfaces
-      md action
+      $ cd action_tutorials_interfaces
+      $ md action
 
 Within the ``action`` directory, create a file called ``Fibonacci.action`` with the following contents:
 
-.. code-block:: console
+.. code-block:: bash
 
   int32 order
   ---
@@ -153,12 +153,10 @@ Note, we need to depend on ``action_msgs`` since action definitions include addi
 
 We should now be able to build the package containing the ``Fibonacci`` action definition:
 
-.. code-block:: bash
+.. code-block:: console
 
-    # Change to the root of the workspace
-    cd ~/ros2_ws
-    # Build
-    colcon build
+    $ cd ~/ros2_ws # Change to the root of the workspace
+    $ colcon build # Build
 
 We're done!
 
@@ -168,13 +166,10 @@ So when we want to refer to our new action, it will have the full name ``action_
 We can check that our action built successfully with the command line tool:
 
 
-.. code-block:: bash
+.. code-block:: console
 
-   # Source our workspace
-   # On Windows: call install/setup.bat
-   . install/setup.bash
-   # Check that our action definition exists
-   ros2 interface show action_tutorials_interfaces/action/Fibonacci
+   $ . install/setup.bash  # Source our workspace. On Windows: call install/setup.bat
+   $ ros2 interface show action_tutorials_interfaces/action/Fibonacci  # Check that our action definition exists
 
 
 You should see the Fibonacci action definition printed to the screen.
