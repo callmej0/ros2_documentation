@@ -66,22 +66,22 @@ Let's also make a new directory to store our saved recordings, just as good prac
 
         .. code-block:: console
 
-            mkdir bag_files
-            cd bag_files
+            $ mkdir bag_files
+            $ cd bag_files
 
     .. group-tab:: macOS
 
         .. code-block:: console
 
-            mkdir bag_files
-            cd bag_files
+            $ mkdir bag_files
+            $ cd bag_files
 
     .. group-tab:: Windows
 
         .. code-block:: console
 
-            md bag_files
-            cd bag_files
+            $ md bag_files
+            $ cd bag_files
 
 
 2 Choose a topic
