@@ -41,7 +41,7 @@ Install additional Python dependencies:
 
 .. code-block:: bash
 
-   pip install -U colcon-common-extensions coverage flake8 flake8-blind-except flake8-builtins flake8-class-newline flake8-comprehensions flake8-deprecated flake8-docstrings flake8-import-order flake8-quotes mock mypy==0.931 pep8 pydocstyle pytest pytest-cov pytest-mock pytest-repeat pytest-rerunfailures pytest-runner vcstool
+   $ pip install -U colcon-common-extensions coverage flake8 flake8-blind-except flake8-builtins flake8-class-newline flake8-comprehensions flake8-deprecated flake8-docstrings flake8-import-order flake8-quotes mock mypy==0.931 pep8 pydocstyle pytest pytest-cov pytest-mock pytest-repeat pytest-rerunfailures pytest-runner vcstool
 
 Build ROS 2
 -----------
@@ -58,16 +58,16 @@ First setup a development folder, for example ``C:\{DISTRO}``:
    It is very important that the chosen path is short, due to the short default Windows path limits (260 characters).
    To allow longer paths, see `maximum-file-path-limitation <https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=registry>`__.
 
-.. code-block:: bash
+.. code-block:: console
 
-   md \{DISTRO}\src
-   cd \{DISTRO}
+   $ md \{DISTRO}\src
+   $ cd \{DISTRO}
 
 Get the ``ros2.repos`` file which defines the repositories to clone from:
 
-.. code-block:: bash
+.. code-block:: console
 
-   vcs import --input https://raw.githubusercontent.com/ros2/ros2/{REPOS_FILE_BRANCH}/ros2.repos src
+   $ vcs import --input https://raw.githubusercontent.com/ros2/ros2/{REPOS_FILE_BRANCH}/ros2.repos src
 
 Install additional RMW implementations (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -84,9 +84,9 @@ To build ROS 2 you will need a Visual Studio Command Prompt ("x64 Native Tools C
 
 To build the ``\{DISTRO}`` folder tree:
 
-.. code-block:: bash
+.. code-block:: console
 
-   colcon build --merge-install
+   $ colcon build --merge-install
 
 .. note::
 
@@ -103,9 +103,9 @@ Setup environment
 
 Start a command shell and source the ROS 2 setup file to set up the workspace:
 
-.. code-block:: bash
+.. code-block:: console
 
-   call C:\{DISTRO}\install\local_setup.bat
+   $ call C:\{DISTRO}\install\local_setup.bat
 
 This will automatically set up the environment for any DDS vendors that support was built for.
 
@@ -118,9 +118,9 @@ Note that the first time you run any executable you will have to allow access to
 
 You can run the tests using this command:
 
-.. code-block:: bash
+.. code-block:: console
 
-   colcon test --merge-install
+   $ colcon test --merge-install
 
 .. note::
 
@@ -128,24 +128,24 @@ You can run the tests using this command:
 
 Afterwards you can get a summary of the tests using this command:
 
-.. code-block:: bash
+.. code-block:: console
 
-   colcon test-result
+   $ colcon test-result
 
 To run the examples, first open a clean new ``cmd.exe`` and set up the workspace by sourcing the ``local_setup.bat`` file.
 Then, run a C++ ``talker``\ :
 
-.. code-block:: bash
+.. code-block:: console
 
-   call install\local_setup.bat
-   ros2 run demo_nodes_cpp talker
+   $ call install\local_setup.bat
+   $ ros2 run demo_nodes_cpp talker
 
 In a separate shell you can do the same, but instead run a Python ``listener``\ :
 
-.. code-block:: bash
+.. code-block:: console
 
-   call install\local_setup.bat
-   ros2 run demo_nodes_py listener
+   $ call install\local_setup.bat
+   $ ros2 run demo_nodes_py listener
 
 You should see the ``talker`` saying that it's ``Publishing`` messages and the ``listener`` saying ``I heard`` those messages.
 This verifies both the C++ and Python APIs are working properly.
@@ -256,6 +256,6 @@ Uninstall
 
 2. If you're also trying to free up space, you can delete the entire workspace directory with:
 
-   .. code-block:: bash
+   .. code-block:: console
 
-      rmdir /s /q \ros2_{DISTRO}
+      $ rmdir /s /q \ros2_{DISTRO}
