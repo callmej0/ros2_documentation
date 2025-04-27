@@ -15,16 +15,12 @@ We assume your ROS 2 installation dir as ``~/ros2_ws``.
 Please change the directories according to your platform.
 
 To start the demo, we execute the demo bringup launch file, which we are going to explain in more details in the next section.
-
-.. code-block:: bash
-
-   source ~/ros2_ws/install/setup.bash
-   ros2 launch dummy_robot_bringup dummy_robot_bringup.launch.py
-
 You should see some prints inside your terminal along the lines of the following:
 
-.. code-block:: bash
+.. code-block:: console
 
+   $ source ~/ros2_ws/install/setup.bash
+   $ ros2 launch dummy_robot_bringup dummy_robot_bringup.launch.py
    [INFO] [launch]: process[dummy_map_server-1]: started with pid [25812]
    [INFO] [launch]: process[robot_state_publisher-2]: started with pid [25813]
    [INFO] [launch]: process[dummy_joint_states-3]: started with pid [25814]
@@ -54,7 +50,7 @@ You should see some prints inside your terminal along the lines of the following
 If you now open RViz2 in a new terminal, you'll see your robot.
 🎉
 
-.. code-block:: bash
+.. code-block:: console
 
    $ source <ROS2_INSTALL_FOLDER>/setup.bash
    $ rviz2

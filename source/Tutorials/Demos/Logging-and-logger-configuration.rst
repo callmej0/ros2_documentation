@@ -147,9 +147,9 @@ In this `demo <https://github.com/ros2/demos/tree/{REPOS_FILE_BRANCH}/logging_de
 
 Start the demo with:
 
-.. code-block:: bash
+.. code-block:: console
 
-   ros2 run logging_demo logging_demo_main
+   $ ros2 run logging_demo logging_demo_main
 
 Over time you will see output from various log calls with different properties.
 To start with you will only see output from log calls with severity ``INFO`` and above (``WARN``, ``ERROR``, ``FATAL``).
@@ -170,24 +170,24 @@ For example, to set the logging directory to ``~/my_logs``:
 
   .. group-tab:: Linux
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      export ROS_LOG_DIR=~/my_logs
-      ros2 run logging_demo logging_demo_main
+      $ export ROS_LOG_DIR=~/my_logs
+      $ ros2 run logging_demo logging_demo_main
 
   .. group-tab:: macOS
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      export ROS_LOG_DIR=~/my_logs
-      ros2 run logging_demo logging_demo_main
+      $ export ROS_LOG_DIR=~/my_logs
+      $ ros2 run logging_demo logging_demo_main
 
   .. group-tab:: Windows
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      set "ROS_LOG_DIR=~/my_logs"
-      ros2 run logging_demo logging_demo_main
+      $ set "ROS_LOG_DIR=~/my_logs"
+      $ ros2 run logging_demo logging_demo_main
 
 You will then find the logs under ``~/my_logs/``.
 
@@ -200,24 +200,24 @@ For example, with ``ROS_HOME`` set to ``~/my_ros_home``:
 
   .. group-tab:: Linux
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      export ROS_HOME=~/my_ros_home
-      ros2 run logging_demo logging_demo_main
+      $ export ROS_HOME=~/my_ros_home
+      $ ros2 run logging_demo logging_demo_main
 
   .. group-tab:: macOS
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      export ROS_HOME=~/my_ros_home
-      ros2 run logging_demo logging_demo_main
+      $ export ROS_HOME=~/my_ros_home
+      $ ros2 run logging_demo logging_demo_main
 
   .. group-tab:: Windows
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      set "ROS_HOME=~/my_ros_home"
-      ros2 run logging_demo logging_demo_main
+      $ set "ROS_HOME=~/my_ros_home"
+      $ ros2 run logging_demo logging_demo_main
 
 You will then find the logs under ``~/my_ros_home/log/``.
 
@@ -239,17 +239,17 @@ In the meantime, this demo provides an **example** service that can be called ex
 The demo previously started is already running this example service.
 To set the level of the demo's logger back to ``INFO``\ , call the service with:
 
-.. code-block:: bash
+.. code-block:: console
 
-   ros2 service call /config_logger logging_demo/srv/ConfigLogger "{logger_name: 'logger_usage_demo', level: INFO}"
+   $ ros2 service call /config_logger logging_demo/srv/ConfigLogger "{logger_name: 'logger_usage_demo', level: INFO}"
 
 This service call will work on any logger that is running in the process provided that you know its name.
 This includes the loggers in the ROS 2 core, such as ``rcl`` (the common client library package).
 To enable debug logging for ``rcl``, call:
 
-.. code-block:: bash
+.. code-block:: console
 
-   ros2 service call /config_logger logging_demo/srv/ConfigLogger "{logger_name: 'rcl', level: DEBUG}"
+   $ ros2 service call /config_logger logging_demo/srv/ConfigLogger "{logger_name: 'rcl', level: DEBUG}"
 
 You should see debug output from ``rcl`` start to show.
 
@@ -263,32 +263,32 @@ As an example, if you want to debug the ``composition::Talker`` demo, you can st
 
 Shell 1:
 
-.. code-block:: bash
+.. code-block:: console
 
-   ros2 run rclcpp_components component_container
+   $ ros2 run rclcpp_components component_container
 
 Shell 2:
 
-.. code-block:: bash
+.. code-block:: console
 
-   ros2 component load /ComponentManager composition composition::Talker
+   $ ros2 component load /ComponentManager composition composition::Talker
 
 And then when you want to enable debug logging, load the ``LoggerConfig`` component with:
 
 Shell 2
 
-.. code-block:: bash
+.. code-block:: console
 
-   ros2 component load /ComponentManager logging_demo logging_demo::LoggerConfig
+   $ ros2 component load /ComponentManager logging_demo logging_demo::LoggerConfig
 
 And finally, configure all unset loggers to the debug severity by addressing the empty-named logger.
 Note that loggers that have been specifically configured to use a particular severity will not be affected by this call.
 
 Shell 2:
 
-.. code-block:: bash
+.. code-block:: console
 
-   ros2 service call /config_logger logging_demo/srv/ConfigLogger "{logger_name: '', level: DEBUG}"
+   $ ros2 service call /config_logger logging_demo/srv/ConfigLogger "{logger_name: '', level: DEBUG}"
 
 You should see debug output from any previously unset loggers in the process start to appear, including from the ROS 2 core.
 
@@ -299,9 +299,9 @@ As of the Bouncy ROS 2 release, the severity level for loggers that have not had
 Restart the demo including the following command line argument:
 
 
-.. code-block:: bash
+.. code-block:: console
 
-   ros2 run logging_demo logging_demo_main --ros-args --log-level debug
+   $ ros2 run logging_demo logging_demo_main --ros-args --log-level debug
 
 This configures the default severity for any unset logger to the debug severity level.
 You should see debug output from loggers from the demo itself and from the ROS 2 core.
@@ -313,9 +313,9 @@ Restart the demo including the following command line arguments:
 
   .. group-tab:: Galactic and newer
 
-    .. code-block:: bash
+    .. code-block:: console
 
-       ros2 run logging_demo logging_demo_main --ros-args --log-level logger_usage_demo:=debug
+      $ ros2 run logging_demo logging_demo_main --ros-args --log-level logger_usage_demo:=debug
 
 
 Console output formatting
@@ -328,24 +328,24 @@ For example, to additionally get the timestamp and location of the log calls, st
 
   .. group-tab:: Linux
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      export RCUTILS_CONSOLE_OUTPUT_FORMAT="[{severity} {time}] [{name}]: {message} ({function_name}() at {file_name}:{line_number})"
-      ros2 run logging_demo logging_demo_main
+      $ export RCUTILS_CONSOLE_OUTPUT_FORMAT="[{severity} {time}] [{name}]: {message} ({function_name}() at {file_name}:{line_number})"
+      $ ros2 run logging_demo logging_demo_main
 
   .. group-tab:: macOS
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      export RCUTILS_CONSOLE_OUTPUT_FORMAT="[{severity} {time}] [{name}]: {message} ({function_name}() at {file_name}:{line_number})"
-      ros2 run logging_demo logging_demo_main
+      $ export RCUTILS_CONSOLE_OUTPUT_FORMAT="[{severity} {time}] [{name}]: {message} ({function_name}() at {file_name}:{line_number})"
+      $ ros2 run logging_demo logging_demo_main
 
   .. group-tab:: Windows
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      set "RCUTILS_CONSOLE_OUTPUT_FORMAT=[{severity} {time}] [{name}]: {message} ({function_name}() at {file_name}:{line_number})"
-      ros2 run logging_demo logging_demo_main
+      $ set "RCUTILS_CONSOLE_OUTPUT_FORMAT=[{severity} {time}] [{name}]: {message} ({function_name}() at {file_name}:{line_number})"
+      $ ros2 run logging_demo logging_demo_main
 
 You should see the timestamp in seconds and the function name, filename and line number additionally printed with each message.
 *The ``time`` option is only supported as of the ROS 2 Bouncy release.*
@@ -361,24 +361,24 @@ For example:
 
   .. group-tab:: Linux
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      export RCUTILS_COLORIZED_OUTPUT=0  # 1 for forcing it
-      ros2 run logging_demo logging_demo_main
+      $ export RCUTILS_COLORIZED_OUTPUT=0  # 1 for forcing it
+      $ ros2 run logging_demo logging_demo_main
 
   .. group-tab:: macOS
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      export RCUTILS_COLORIZED_OUTPUT=0  # 1 for forcing it
-      ros2 run logging_demo logging_demo_main
+      $ export RCUTILS_COLORIZED_OUTPUT=0  # 1 for forcing it
+      $ ros2 run logging_demo logging_demo_main
 
   .. group-tab:: Windows
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      set "RCUTILS_COLORIZED_OUTPUT=0" :: 1 for forcing it
-      ros2 run logging_demo logging_demo_main
+      $ set "RCUTILS_COLORIZED_OUTPUT=0" :: 1 for forcing it
+      $ ros2 run logging_demo logging_demo_main
 
 You should see that debug, warn, error and fatal logs aren't colorized now.
 
@@ -400,21 +400,21 @@ For example:
 
   .. group-tab:: Linux
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      export RCUTILS_LOGGING_USE_STDOUT=1
+      $ export RCUTILS_LOGGING_USE_STDOUT=1
 
   .. group-tab:: macOS
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      export RCUTILS_LOGGING_USE_STDOUT=1
+      $ export RCUTILS_LOGGING_USE_STDOUT=1
 
   .. group-tab:: Windows
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      set "RCUTILS_LOGGING_USE_STDOUT=1"
+      $ set "RCUTILS_LOGGING_USE_STDOUT=1"
 
 
 Line buffered console output
@@ -429,24 +429,24 @@ For example:
 
   .. group-tab:: Linux
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      export RCUTILS_LOGGING_BUFFERED_STREAM=1
+      $ export RCUTILS_LOGGING_BUFFERED_STREAM=1
 
   .. group-tab:: macOS
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      export RCUTILS_LOGGING_BUFFERED_STREAM=1
+      $ export RCUTILS_LOGGING_BUFFERED_STREAM=1
 
   .. group-tab:: Windows
 
-    .. code-block:: bash
+    .. code-block:: console
 
-      set "RCUTILS_LOGGING_BUFFERED_STREAM=1"
+      $ set "RCUTILS_LOGGING_BUFFERED_STREAM=1"
 
 Then run:
 
-.. code-block:: bash
+.. code-block:: console
 
-    ros2 run logging_demo logging_demo_main
+    $ ros2 run logging_demo logging_demo_main
