@@ -40,21 +40,21 @@ Downloading ROS 2
 *
   Unpack it:
 
-  .. code-block:: bash
+  .. code-block:: console
 
-       mkdir -p ~/ros2_{DISTRO}
-       cd ~/ros2_{DISTRO}
-       tar xf ~/Downloads/ros2-package-linux-x86_64.tar.bz2
+       $ mkdir -p ~/ros2_{DISTRO}
+       $ cd ~/ros2_{DISTRO}
+       $ tar xf ~/Downloads/ros2-package-linux-x86_64.tar.bz2
 
 Installing and initializing rosdep
 ----------------------------------
 
-.. code-block:: bash
+.. code-block:: console
 
-       sudo apt update
-       sudo apt install -y python3-rosdep
-       sudo rosdep init
-       rosdep update
+       $ sudo apt update
+       $ sudo apt install -y python3-rosdep
+       $ sudo rosdep init
+       $ rosdep update
 
 .. _linux-install-binary-install-missing-dependencies:
 
@@ -93,28 +93,31 @@ Source the setup script
 
 Set up your environment by sourcing the following file.
 
-.. code-block:: bash
+.. code-block:: console
 
-   # Replace ".bash" with your shell if you're not using bash
-   # Possible values are: setup.bash, setup.sh, setup.zsh
-  . ~/ros2_{DISTRO}/ros2-linux/setup.bash
+   $ . ~/ros2_{DISTRO}/ros2-linux/setup.bash
+
+.. note::
+
+   Replace ``.bash`` with your shell if you're not using bash.
+   Possible values are: ``setup.bash``, ``setup.sh``, ``setup.zsh``.
 
 Try some examples
 -----------------
 
 In one terminal, source the setup file and then run a C++ ``talker``:
 
-.. code-block:: bash
+.. code-block:: console
 
-   . ~/ros2_{DISTRO}/ros2-linux/setup.bash
-   ros2 run demo_nodes_cpp talker
+   $ . ~/ros2_{DISTRO}/ros2-linux/setup.bash
+   $ ros2 run demo_nodes_cpp talker
 
 In another terminal source the setup file and then run a Python ``listener``:
 
-.. code-block:: bash
+.. code-block:: console
 
-   . ~/ros2_{DISTRO}/ros2-linux/setup.bash
-   ros2 run demo_nodes_py listener
+   $ . ~/ros2_{DISTRO}/ros2-linux/setup.bash
+   $ ros2 run demo_nodes_py listener
 
 You should see the ``talker`` saying that it's ``Publishing`` messages and the ``listener`` saying ``I heard`` those messages.
 This verifies both the C++ and Python APIs are working properly.
@@ -147,6 +150,6 @@ Uninstall
 
 2. If you're also trying to free up space, you can delete the entire workspace directory with:
 
-   .. code-block:: bash
+   .. code-block:: console
 
-    rm -rf ~/ros2_{DISTRO}
+      $ rm -rf ~/ros2_{DISTRO}

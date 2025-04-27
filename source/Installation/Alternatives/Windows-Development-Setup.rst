@@ -34,9 +34,9 @@ When building from source you'll need a few additional prerequisites installed.
 Install additional prerequisites from Chocolatey
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: bash
+.. code-block:: console
 
-   choco install -y cppcheck curl git winflexbison3
+   $ choco install -y cppcheck curl git winflexbison3
 
 You will need to append the Git cmd folder ``C:\Program Files\Git\cmd`` to the PATH (you can do this by clicking the Windows icon, typing "Environment Variables", then clicking on "Edit the system environment variables".
 In the resulting dialog, click "Environment Variables", the click "Path" on the bottom pane, then click "Edit" and add the path).
@@ -49,7 +49,7 @@ Installing additional Python dependencies:
 
 .. code-block:: bash
 
-   pip install -U colcon-common-extensions coverage flake8 flake8-blind-except flake8-builtins flake8-class-newline flake8-comprehensions flake8-deprecated flake8-docstrings flake8-import-order flake8-quotes mock mypy==0.931 pep8 pydocstyle pytest pytest-mock vcstool
+   $ pip install -U colcon-common-extensions coverage flake8 flake8-blind-except flake8-builtins flake8-class-newline flake8-comprehensions flake8-deprecated flake8-docstrings flake8-import-order flake8-quotes mock mypy==0.931 pep8 pydocstyle pytest pytest-mock vcstool
 
 Install miscellaneous prerequisites
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -74,14 +74,14 @@ First setup a development folder, for example ``C:\{DISTRO}``:
 
 .. code-block:: bash
 
-   md \{DISTRO}\src
-   cd \{DISTRO}
+   $ md \{DISTRO}\src
+   $ cd \{DISTRO}
 
 Get the ``ros2.repos`` file which defines the repositories to clone from:
 
-.. code-block:: bash
+.. code-block:: console
 
-   vcs import --input https://raw.githubusercontent.com/ros2/ros2/{REPOS_FILE_BRANCH}/ros2.repos src
+   $ vcs import --input https://raw.githubusercontent.com/ros2/ros2/{REPOS_FILE_BRANCH}/ros2.repos src
 
 Install additional DDS implementations (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -99,9 +99,9 @@ To build ROS 2 you will need a Visual Studio Command Prompt ("x64 Native Tools C
 
 To build the ``\{DISTRO}`` folder tree:
 
-.. code-block:: bash
+.. code-block:: console
 
-   colcon build --merge-install
+   $ colcon build --merge-install
 
 .. note::
 
@@ -118,9 +118,9 @@ Environment setup
 
 Start a command shell and source the ROS 2 setup file to set up the workspace:
 
-.. code-block:: bash
+.. code-block:: console
 
-   call C:\{DISTRO}\install\local_setup.bat
+   $ call C:\{DISTRO}\install\local_setup.bat
 
 This will automatically set up the environment for any DDS vendors that support was built for.
 
@@ -133,9 +133,9 @@ Note that the first time you run any executable you will have to allow access to
 
 You can run the tests using this command:
 
-.. code-block:: bash
+.. code-block:: console
 
-   colcon test --merge-install
+   $ colcon test --merge-install
 
 .. note::
 
@@ -143,24 +143,24 @@ You can run the tests using this command:
 
 Afterwards you can get a summary of the tests using this command:
 
-.. code-block:: bash
+.. code-block:: console
 
-   colcon test-result
+   $ colcon test-result
 
 To run the examples, first open a clean new ``cmd.exe`` and set up the workspace by sourcing the ``local_setup.bat`` file.
 Then, run a C++ ``talker``\ :
 
-.. code-block:: bash
+.. code-block:: console
 
-   call install\local_setup.bat
-   ros2 run demo_nodes_cpp talker
+   $ call install\local_setup.bat
+   $ ros2 run demo_nodes_cpp talker
 
 In a separate shell you can do the same, but instead run a Python ``listener``\ :
 
-.. code-block:: bash
+.. code-block:: console
 
-   call install\local_setup.bat
-   ros2 run demo_nodes_py listener
+   $ call install\local_setup.bat
+   $ ros2 run demo_nodes_py listener
 
 You should see the ``talker`` saying that it's ``Publishing`` messages and the ``listener`` saying ``I heard`` those messages.
 This verifies both the C++ and Python APIs are working properly.
@@ -282,6 +282,6 @@ Uninstall
 
 2. If you're also trying to free up space, you can delete the entire workspace directory with:
 
-   .. code-block:: bash
+   .. code-block:: console
 
-      rmdir /s /q \ros2_{DISTRO}
+      $ rmdir /s /q \ros2_{DISTRO}
