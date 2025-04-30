@@ -33,7 +33,7 @@ Set locale
 .. include:: _Ubuntu-Set-Locale.rst
 
 Install ros-apt-source package
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. include:: _Apt-Repositories.rst
 
