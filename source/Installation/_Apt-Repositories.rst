@@ -1,6 +1,6 @@
 The package `ros-apt-source <https://github.com/ros-infrastructure/ros-apt-source/>`_ provides keys and source configuration for the ROS repositories.
 
-You will need install this package con configure ROS repositories.
+You will need to install this package to configure ROS apt repositories.
 
 .. code-block:: console
 
