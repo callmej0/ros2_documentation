@@ -1,4 +1,4 @@
-You will need to add the ROS 2 repository to your system.
+You will need to add the ROS 2 apt repository to your system.
 
 First ensure that the `Ubuntu Universe repository <https://help.ubuntu.com/community/Repositories/Ubuntu>`_ is enabled.
 
