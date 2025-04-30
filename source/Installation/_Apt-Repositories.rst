@@ -1,8 +1,18 @@
-The package `ros-apt-source <https://github.com/ros-infrastructure/ros-apt-source/>`_ provides keys and source configuration for the ROS repositories.
+You will need to add the ROS 2 repository to your system.
 
-You will need to install this package to configure ROS apt repositories.
+First ensure that the `Ubuntu Universe repository <https://help.ubuntu.com/community/Repositories/Ubuntu>`_ is enabled.
 
 .. code-block:: console
 
-   $ curl -O --output-dir /tmp/ https://ftp.osuosl.org/pub/ros/packages.ros.org/ros2-testing/ubuntu/pool/main/r/ros-apt-source/ros2-apt-source_1.0.0~$(. /etc/os-release && echo $VERSION_CODENAME)_all.deb
-   $ sudo apt install /tmp/ros2-apt-source_1.0.0~$(. /etc/os-release && echo $VERSION_CODENAME)_all.deb
+   $ sudo apt install software-properties-common
+   $ sudo add-apt-repository universe
+
+The package `ros-apt-source <https://github.com/ros-infrastructure/ros-apt-source/>`_ provides keys and source configuration for the ROS repositories.
+
+Installing the ros2-apt-source package will configure ROS 2 repositories for your system.
+Updates to repository configuration will occur automatically when new versions of this package are released to the ROS repositories.
+
+.. code-block:: console
+
+   $ curl -o /tmp/ros2-testing-apt-source.deb https://ftp.osuosl.org/pub/ros/packages.ros.org/ros2-testing/ubuntu/pool/main/r/ros-apt-source/ros2-testing-apt-source_1.0.0~$(. /etc/os-release && echo $VERSION_CODENAME)_all.deb
+   $ sudo apt install /tmp/ros2-testing-apt-source.deb
