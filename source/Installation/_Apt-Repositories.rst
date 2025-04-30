@@ -7,7 +7,7 @@ First ensure that the `Ubuntu Universe repository <https://help.ubuntu.com/commu
    $ sudo apt install software-properties-common
    $ sudo add-apt-repository universe
 
-The package `ros-apt-source <https://github.com/ros-infrastructure/ros-apt-source/>`_ provides keys and source configuration for the ROS repositories.
+The `ros-apt-source <https://github.com/ros-infrastructure/ros-apt-source/>`_ packages provide keys and apt source configuration for the various ROS repositories.
 
 Installing the ros2-apt-source package will configure ROS 2 repositories for your system.
 Updates to repository configuration will occur automatically when new versions of this package are released to the ROS repositories.
