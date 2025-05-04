@@ -165,6 +165,30 @@ So when we want to refer to our new action, it will have the full name ``action_
 
 We can check that our action built successfully with the command line tool:
 
+<<<<<<< HEAD
+=======
+.. tabs::
+
+  .. group-tab:: Linux
+
+    .. code-block:: console
+
+      $ source install/local_setup.bash
+
+  .. group-tab:: macOS
+
+    .. code-block:: console
+
+      $ source install/local_setup.console
+
+  .. group-tab:: Windows
+
+    .. code-block:: console
+
+      $ call install\local_setup.bat
+
+Now check that our action definition exists:
+>>>>>>> c2d667c (Fix incorrect sourcing command for Linux in Creating-an-Action tutorial (#5537))
 
 .. code-block:: console
 
