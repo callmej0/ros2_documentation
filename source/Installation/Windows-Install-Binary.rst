@@ -45,6 +45,10 @@ Install prerequisites
 
 ROS 2 uses `conda-forge <https://conda-forge.org/>`__ as a backend for packages, with `pixi <https://pixi.sh/latest/>`__ as the frontend.
 
+.. note::
+
+   The installation of conda-forge may trigger Windows Defender to treat it as a threat, but this can be safely ignored by clicking "More info" and "Run anyway".
+
 Install pixi
 ^^^^^^^^^^^^
 
