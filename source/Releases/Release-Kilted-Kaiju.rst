@@ -86,7 +86,7 @@ This allows to instrospect an action with the command line.
 Using ``ros2cli`` tools: ``ros2 action echo <action name>``.
 
 See https://github.com/ros2/ros2cli/pull/978 for more information.
-Visit `ros2 action echo <../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html#ros2-action-echo>`_ and :doc:`Action Introspection <../Tutorials/Demos/Action-Introspection>` to learn more about this feature.
+Visit `ros2 action echo <../Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html#ros2-action-echo>`_.
 
 ``rclcpp``
 ^^^^^^^^^^
