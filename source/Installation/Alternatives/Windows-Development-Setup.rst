@@ -262,4 +262,8 @@ Uninstall
 
    .. code-block:: console
 
+<<<<<<< HEAD
       $ rmdir /s /q \ros2_{DISTRO}
+=======
+      $ rmdir /s /q C:\dev\{DISTRO}
+>>>>>>> 29c96cb (Update Windows-Development-Setup.rst cleanup instructions (#5631))
