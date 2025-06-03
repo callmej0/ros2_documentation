@@ -163,10 +163,10 @@ Doxygen Comments
 ~~~~~~~~~~~~~~~~
 
 * While it is allowed to use ``/** */`` style comments for documentation, we prefer ``///`` style
-  comments for Doxygen
+  comments for Doxygen.
 
-  * rationale: ``///`` is more consistent with the rest of the C++ code
-  * rationale: ``///`` is easier to type and read in most editors
+  * rationale: ``///`` is more consistent with the rest of the C++ code.
+  * rationale: ``///`` is easier to type and read in most editors.
   * rationale: The Doxygen comments with ``///`` is easier to read in the code itself, as it is
     more compact versus ``/** */`` which takes up more space and requires more lines.
   * Note that using ``/** */`` Doxygen comments is useful in cases when C++ header files could
