@@ -30,6 +30,9 @@ lint:
 test:
 	doc8 --ignore D001 --ignore-path build
 
+test-tools:
+	$(PYTHON) -m pytest test/
+
 spellcheck:
 	git ls-files '*.md' '*.rst' | xargs codespell --config codespell.cfg
 
@@ -58,4 +61,4 @@ linkcheck:
 	@echo
 	@echo "Check finished. Report is in $(LINKCHECKDIR)."
 
-.PHONY: help Makefile multiversion test linkcheck lint spellcheck check-dictionaries sort-dictionaries
+.PHONY: help Makefile multiversion test test-unit linkcheck lint spellcheck check-dictionaries sort-dictionaries
