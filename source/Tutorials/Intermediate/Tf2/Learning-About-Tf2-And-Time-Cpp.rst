@@ -38,12 +38,19 @@ Open ``turtle_tf2_listener.cpp`` and take a look at the ``lookupTransform()`` ca
 
 .. code-block:: C++
 
+<<<<<<< HEAD
    try {
        t = tf_buffer_->lookupTransform(
           toFrameRel,
           fromFrameRel,
           tf2::TimePointZero);
    } catch (const tf2::TransformException & ex) {
+=======
+   t = tf_buffer_->lookupTransform(
+      toFrameRel,
+      fromFrameRel,
+      tf2::TimePointZero);
+>>>>>>> 0cd731c (Update Learning-About-Tf2-And-Time-Cpp.rst (#5739))
 
 You can see that we specified a time equal to 0 by calling ``tf2::TimePointZero``.
 
@@ -60,11 +67,18 @@ Now, change this line to get the transform at the current time, ``this->get_cloc
 .. code-block:: C++
 
    rclcpp::Time now = this->get_clock()->now();
+<<<<<<< HEAD
    try {
        t = tf_buffer_->lookupTransform(
            toFrameRel, fromFrameRel,
            now);
    } catch (const tf2::TransformException & ex) {
+=======
+   t = tf_buffer_->lookupTransform(
+      toFrameRel,
+      fromFrameRel,
+      now);
+>>>>>>> 0cd731c (Update Learning-About-Tf2-And-Time-Cpp.rst (#5739))
 
 Now build the package and try to run the launch file.
 
@@ -92,6 +106,7 @@ To fix this, edit your code as shown below (add the last timeout parameter):
 .. code-block:: C++
 
    rclcpp::Time now = this->get_clock()->now();
+<<<<<<< HEAD
    try {
        t = tf_buffer_->lookupTransform(
            toFrameRel,
@@ -99,6 +114,13 @@ To fix this, edit your code as shown below (add the last timeout parameter):
            now,
            50ms);
    } catch (const tf2::TransformException & ex) {
+=======
+   t = tf_buffer_->lookupTransform(
+      toFrameRel,
+      fromFrameRel,
+      now,
+      50ms);
+>>>>>>> 0cd731c (Update Learning-About-Tf2-And-Time-Cpp.rst (#5739))
 
 The ``lookupTransform()`` can take four arguments, where the last one is an optional timeout.
 It will block for up to that duration waiting for it to timeout.
